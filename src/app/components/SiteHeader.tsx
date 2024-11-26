@@ -61,8 +61,8 @@ export default function SiteHeader() {
         </div>
       </Link>
 
-      <nav className="hidden gap-6 self-center font-sans text-2xl font-medium md:flex lg:gap-8">
-        {/* <Link
+      {/* <nav className="hidden gap-6 self-center font-sans text-2xl font-medium md:flex lg:gap-8">
+        <Link
           href="cv"
           aria-label="Go to my CV."
         //   prefetch="intent"
@@ -81,8 +81,8 @@ export default function SiteHeader() {
         //   }
         >
           Portfolio
-        <Link> */}
-      </nav>
+        <Link>
+      </nav> */}
       <DropdownMenu.Root open={showNav} onOpenChange={setShowNav}>
         <DropdownMenu.Trigger className="rounded px-1.5 focus:bg-skin-fill-muted focus:outline-none md:hidden">
           {!showNav && (
