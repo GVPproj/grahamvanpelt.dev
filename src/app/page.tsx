@@ -1,6 +1,6 @@
-import Face from "./components/Face";
-import FadeUp from "./components/FadeUp";
-import SpanCycle from "./components/SpanCycle";
+import Face from "./components/Face"
+import FadeUp from "./components/FadeUp"
+import SpanCycle from "./components/SpanCycle"
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
         <section className="mb-16 flex flex-col items-center gap-8 text-skin-base hover:text-skin-base md:flex-row md:justify-between">
           <p className="min-w-[320px] font-serif text-4xl font-semibold md:max-w-[20ch] md:text-5xl">
             A{" "}
-            <span className="italic text-skin-accent ">Software Developer</span>
+            <span className="italic text-skin-accent">Software Developer</span>
             {", "}
             building for the web with <br />
             <SpanCycle />.
@@ -51,5 +51,5 @@ export default function Home() {
     //     <Face />
     //   </main>
     // </div>
-  );
+  )
 }
