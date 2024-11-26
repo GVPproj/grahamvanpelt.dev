@@ -2,20 +2,108 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  :root,
+  html {
+    --colour-text-base: #f4f4f5; /* main text */
+    --colour-text-muted: #e4e4e7;
+    --colour-accent: #e879f9; /* Link color */
+    --colour-highlight: #d946ef;
+    --colour-fill: hsl(204, 80%, 15%);
+    --colour-fill-muted: hsl(204, 80%, 20%);
   }
 }
 
+html {
+  @apply bg-skin-fill font-serif text-skin-base antialiased bg-[radial-gradient(#e4e4e725_.25px,#082f4900_1px)] bg-[size:20px_20px]  bg-fixed;
+}
 body {
-  color: var(--foreground);
-  background: var(--background);
+  @apply mx-auto flex h-screen max-w-screen-lg flex-col items-center overflow-y-scroll;
   font-family: Arial, Helvetica, sans-serif;
+}
+main {
+  @apply mx-auto mt-12  w-full p-6 md:mt-0;
+}
+
+article,
+aside {
+  @apply prose prose-zinc dark:prose-invert;
+}
+a {
+  @apply text-skin-accent no-underline transition-colors hover:text-skin-highlight;
+}
+p {
+  @apply font-sans text-lg;
+}
+span {
+  @apply italic;
+}
+.navLink {
+  @apply text-skin-base transition-colors hover:text-skin-highlight;
+}
+
+@font-face {
+  font-family: "Sfizia";
+  font-weight: 400;
+  src: url("/fonts/sfizia/sfizia-regular-webfont.woff") format("woff"),
+    url("/fonts/sfizia/sfizia-regular-webfont.woff2") format("woff2");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Sfizia";
+  font-weight: 400;
+  src: url("/fonts/sfizia/sfizia-regularitalicno.2-webfont.woff") format("woff"),
+    url("/fonts/sfizia/sfizia-regularitalicno.2-webfont.woff2") format("woff2");
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Sfizia";
+  font-weight: 700;
+  src: url("/fonts/sfizia/sfizia-bold-webfont.woff") format("woff"),
+    url("/fonts/sfizia/sfizia-bold-webfont.woff2") format("woff2");
+  font-style: normal;
+}
+@font-face {
+  font-family: "Wotfard";
+  font-weight: 100;
+  src: url("/fonts/wotfard/wotfard-thin-webfont.woff2") format("woff2");
+  font-style: normal;
+}
+@font-face {
+  font-family: "Wotfard";
+  font-weight: 200;
+  src: url("/fonts/wotfard/wotfard-extralight-webfont.woff2") format("woff2");
+  font-style: normal;
+}
+@font-face {
+  font-family: "Wotfard";
+  font-weight: 300;
+  src: url("/fonts/wotfard/wotfard-light-webfont.woff2") format("woff2");
+  font-style: normal;
+}
+@font-face {
+  font-family: "Wotfard";
+  font-weight: 400;
+  src: url("/fonts/wotfard/wotfard-regular-webfont.woff2") format("woff2");
+  font-style: normal;
+}
+@font-face {
+  font-family: "Wotfard";
+  font-weight: 500;
+  src: url("/fonts/wotfard/wotfard-medium-webfont.woff2") format("woff2");
+  font-style: normal;
+}
+@font-face {
+  font-family: "Wotfard";
+  font-weight: 600;
+  src: url("/fonts/wotfard/wotfard-semibold-webfont.woff2") format("woff2");
+  font-style: normal;
+}
+@font-face {
+  font-family: "Wotfard";
+  font-weight: 700;
+  src: url("/fonts/wotfard/wotfard-bold-webfont.woff2") format("woff2");
+  font-style: normal;
 }
