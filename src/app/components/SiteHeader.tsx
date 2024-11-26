@@ -60,18 +60,18 @@ export default function SiteHeader() {
           </svg>
         </div>
       </Link>
-
-      {/* <nav className="hidden gap-6 self-center font-sans text-2xl font-medium md:flex lg:gap-8">
-        <Link
-          href="cv"
-          aria-label="Go to my CV."
+      <Link
+        href="cv"
+        aria-label="Go to my CV."
         //   prefetch="intent"
         //   className={({ isActive }) =>
         //     isActive ? "text-skin-accent" : "navLink"
         //   }
-        >
-          CV
-        </Link>
+      >
+        CV
+      </Link>
+
+      {/* <nav className="hidden gap-6 self-center font-sans text-2xl font-medium md:flex lg:gap-8">
         <Link
           href="portfolio"
           aria-label="Go to the Portfolio page."
