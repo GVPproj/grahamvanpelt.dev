@@ -1,3 +1,4 @@
+import Link from "next/link"
 import Face from "./components/Face"
 import FadeUp from "./components/FadeUp"
 import SpanCycle from "./components/SpanCycle"
@@ -24,9 +25,8 @@ export default function Home() {
             <span className="font-semibold not-italic">React</span> with{" "}
             <span className="font-semibold not-italic">TypeScript</span> to
             build satisfying and accessible web experiences. Visit my{" "}
-            {/* <Link
-              prefetch="render"
-              to="portfolio"
+            <Link
+              href="portfolio"
               aria-label="Go to my portfolio page."
               className="font-serif italic underline"
             >
@@ -34,13 +34,13 @@ export default function Home() {
             </Link>{" "}
             or have a look through my{" "}
             <Link
-              prefetch="render"
-              to="cv"
+              // prefetch="render"
+              href="cv"
               aria-label="Go to my CV."
-              className="font-serif  italic underline"
+              className="font-serif italic underline"
             >
               CV
-            </Link> */}
+            </Link>
             .
           </p>
         </section>

@@ -19,7 +19,6 @@ html {
 }
 body {
   @apply mx-auto flex h-screen max-w-screen-lg flex-col items-center overflow-y-scroll;
-  font-family: Arial, Helvetica, sans-serif;
 }
 main {
   @apply mx-auto mt-12 w-full p-6 md:mt-0;

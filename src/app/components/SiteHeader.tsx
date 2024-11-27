@@ -1,35 +1,37 @@
-"use client";
+"use client"
 
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
+import * as DropdownMenu from "@radix-ui/react-dropdown-menu"
 // import { NavLink } from "@remix-run/react";
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react"
 import {
   motion,
   AnimatePresence,
   useAnimationControls,
   useReducedMotion,
-} from "framer-motion";
-import Link from "next/link";
+} from "framer-motion"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 const sleep = (s: number) =>
-  new Promise((resolve) => setTimeout(resolve, s * 1000));
+  new Promise((resolve) => setTimeout(resolve, s * 1000))
 
 export default function SiteHeader() {
-  const [showNav, setShowNav] = useState(false);
-  const controls = useAnimationControls();
+  const [showNav, setShowNav] = useState(false)
+  const controls = useAnimationControls()
+  const currentPath = usePathname()
 
   async function closeMenu() {
-    await controls.start("closed");
-    setShowNav(false);
+    await controls.start("closed")
+    setShowNav(false)
     // here we are ensuring our menu animation finished before
     // dismissing the menu
   }
 
   useEffect(() => {
     if (showNav) {
-      controls.start("open");
+      controls.start("open")
     }
-  }, [controls, showNav]);
+  }, [controls, showNav])
 
   return (
     <header className="flex min-w-full justify-between p-6 transition-all md:py-12 lg:mb-8">
@@ -37,9 +39,7 @@ export default function SiteHeader() {
         href="/"
         aria-label="Go back to the homepage"
         // prefetch="intent"
-        // className={({ isActive }) =>
-        //   isActive ? "stroke-skin-accent" : "navLink"
-        // }
+        className={currentPath === "/" ? "stroke-skin-accent" : "navLink"}
       >
         <div className="">
           <svg
@@ -60,29 +60,25 @@ export default function SiteHeader() {
           </svg>
         </div>
       </Link>
-      <Link
-        href="cv"
-        aria-label="Go to my CV."
-        //   prefetch="intent"
-        //   className={({ isActive }) =>
-        //     isActive ? "text-skin-accent" : "navLink"
-        //   }
-      >
-        CV
-      </Link>
 
-      {/* <nav className="hidden gap-6 self-center font-sans text-2xl font-medium md:flex lg:gap-8">
+      <nav className="hidden gap-6 self-center font-sans text-2xl font-medium md:flex lg:gap-8">
+        <Link
+          href="cv"
+          aria-label="Go to my CV."
+          className={currentPath === "/cv" ? "text-skin-accent" : "navLink"}
+        >
+          CV
+        </Link>
         <Link
           href="portfolio"
           aria-label="Go to the Portfolio page."
-        //   prefetch="intent"
-        //   className={({ isActive }) =>
-        //     isActive ? "text-skin-accent" : "navLink"
-        //   }
+          className={
+            currentPath === "/portfolio" ? "text-skin-accent" : "navLink"
+          }
         >
           Portfolio
-        <Link>
-      </nav> */}
+        </Link>
+      </nav>
       <DropdownMenu.Root open={showNav} onOpenChange={setShowNav}>
         <DropdownMenu.Trigger className="rounded px-1.5 focus:bg-skin-fill-muted focus:outline-none md:hidden">
           {!showNav && (
@@ -108,7 +104,7 @@ export default function SiteHeader() {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="h-8 w-8      "
+              className="h-8 w-8"
             >
               <path
                 strokeLinecap="round"
@@ -121,10 +117,7 @@ export default function SiteHeader() {
         <AnimatePresence>
           <DropdownMenu.Portal>
             <DropdownMenu.Content
-              className="items-left flex h-screen w-screen flex-col gap-16
-                  bg-skin-fill px-6 py-24 font-sans text-2xl 
-                  font-medium 
-                  md:hidden"
+              className="items-left flex h-screen w-screen flex-col gap-16 bg-skin-fill px-6 py-24 font-sans text-2xl font-medium md:hidden"
               asChild
             >
               <motion.div
@@ -158,7 +151,7 @@ export default function SiteHeader() {
         </AnimatePresence>
       </DropdownMenu.Root>
     </header>
-  );
+  )
 }
 
 function Item({
@@ -166,39 +159,37 @@ function Item({
   onSelect = () => {},
   closeMenu,
 }: {
-  children?: ReactNode;
-  onSelect?: () => void;
-  closeMenu: () => void;
+  children?: ReactNode
+  onSelect?: () => void
+  closeMenu: () => void
 }) {
-  const controls = useAnimationControls();
-  const shouldReduceMotion = useReducedMotion();
+  const controls = useAnimationControls()
+  const shouldReduceMotion = useReducedMotion()
   return (
     <DropdownMenu.Item
       onSelect={async (e) => {
-        e.preventDefault();
+        e.preventDefault()
         if (!shouldReduceMotion) {
           await controls.start({
             backgroundColor: "var(--colour-text-muted)",
             color: "var(--colour-fill-muted)",
             transition: { duration: 0.1 },
-          });
+          })
           await controls.start({
             backgroundColor: "var(--colour-fill)",
             color: "var(--colour-text-base)",
             transition: { duration: 0.3 },
-          });
-          await sleep(0.4);
+          })
+          await sleep(0.4)
         }
 
-        await closeMenu();
-        onSelect();
+        await closeMenu()
+        onSelect()
       }}
       asChild
-      className="w-min select-none rounded px-2 py-1.5 text-skin-base 
-       data-[highlighted]:bg-skin-fill-muted 
-       data-[highlighted]:text-skin-base data-[highlighted]:focus:outline-none"
+      className="w-min select-none rounded px-2 py-1.5 text-skin-base data-[highlighted]:bg-skin-fill-muted data-[highlighted]:text-skin-base data-[highlighted]:focus:outline-none"
     >
       <motion.div animate={controls}>{children}</motion.div>
     </DropdownMenu.Item>
-  );
+  )
 }
