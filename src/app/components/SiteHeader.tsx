@@ -1,16 +1,16 @@
-"use client"
+'use client'
 
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu"
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
 // import { NavLink } from "@remix-run/react";
-import React, { ReactNode, useEffect, useState } from "react"
+import React, { ReactNode, useEffect, useState } from 'react'
 import {
   motion,
   AnimatePresence,
   useAnimationControls,
   useReducedMotion,
-} from "framer-motion"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
+} from 'framer-motion'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 
 const sleep = (s: number) =>
   new Promise((resolve) => setTimeout(resolve, s * 1000))
@@ -21,7 +21,7 @@ export default function SiteHeader() {
   const currentPath = usePathname()
 
   async function closeMenu() {
-    await controls.start("closed")
+    await controls.start('closed')
     setShowNav(false)
     // here we are ensuring our menu animation finished before
     // dismissing the menu
@@ -29,7 +29,7 @@ export default function SiteHeader() {
 
   useEffect(() => {
     if (showNav) {
-      controls.start("open")
+      controls.start('open')
     }
   }, [controls, showNav])
 
@@ -39,7 +39,7 @@ export default function SiteHeader() {
         href="/"
         aria-label="Go back to the homepage"
         // prefetch="intent"
-        className={currentPath === "/" ? "stroke-skin-accent" : "navLink"}
+        className={currentPath === '/' ? 'stroke-skin-accent' : 'navLink'}
       >
         <div className="">
           <svg
@@ -65,7 +65,7 @@ export default function SiteHeader() {
         <Link
           href="cv"
           aria-label="Go to my CV."
-          className={currentPath === "/cv" ? "text-skin-accent" : "navLink"}
+          className={currentPath === '/cv' ? 'text-skin-accent' : 'navLink'}
         >
           CV
         </Link>
@@ -73,7 +73,7 @@ export default function SiteHeader() {
           href="portfolio"
           aria-label="Go to the Portfolio page."
           className={
-            currentPath === "/portfolio" ? "text-skin-accent" : "navLink"
+            currentPath === '/portfolio' ? 'text-skin-accent' : 'navLink'
           }
         >
           Portfolio
@@ -122,16 +122,16 @@ export default function SiteHeader() {
             >
               <motion.div
                 initial="closed"
-                animate={showNav ? "open" : "closed"}
+                animate={showNav ? 'open' : 'closed'}
                 // exit="closed"
                 variants={{
                   open: {
                     opacity: 1,
-                    transition: { ease: "easeOut", duration: 0.2 },
+                    transition: { ease: 'easeOut', duration: 0.2 },
                   },
                   closed: {
                     opacity: 0,
-                    transition: { ease: "easeIn", duration: 0.3 },
+                    transition: { ease: 'easeIn', duration: 0.3 },
                   },
                 }}
               >
@@ -171,13 +171,13 @@ function Item({
         e.preventDefault()
         if (!shouldReduceMotion) {
           await controls.start({
-            backgroundColor: "var(--colour-text-muted)",
-            color: "var(--colour-fill-muted)",
+            backgroundColor: 'var(--colour-text-muted)',
+            color: 'var(--colour-fill-muted)',
             transition: { duration: 0.1 },
           })
           await controls.start({
-            backgroundColor: "var(--colour-fill)",
-            color: "var(--colour-text-base)",
+            backgroundColor: 'var(--colour-fill)',
+            color: 'var(--colour-text-base)',
             transition: { duration: 0.3 },
           })
           await sleep(0.4)

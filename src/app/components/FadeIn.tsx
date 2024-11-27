@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react"
+'use client'
+
+import React, { useState, useEffect } from 'react'
 
 interface FadeInProps {
   children: React.ReactElement
@@ -12,8 +14,8 @@ const FadeIn: React.FC<FadeInProps> = ({ children }) => {
   return (
     <div
       className={
-        "opacity-0 transition-opacity duration-300 ease-in-out " +
-        (loaded ? "opacity-100" : "opacity-0")
+        'opacity-0 transition-opacity duration-300 ease-in-out ' +
+        (loaded ? 'opacity-100' : 'opacity-0')
       }
     >
       {children}
