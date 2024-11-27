@@ -1,8 +1,8 @@
-import type { Metadata } from "next"
+import type { Metadata } from 'next'
 // import localFont from "next/font/local"
-import "./globals.css"
-import SiteHeader from "./components/SiteHeader"
-import SiteFooter from "./components/SiteFooter"
+import './globals.css'
+import SiteHeader from './components/SiteHeader'
+import SiteFooter from './components/SiteFooter'
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -16,7 +16,7 @@ import SiteFooter from "./components/SiteFooter"
 // })
 
 export const metadata: Metadata = {
-  title: "Graham Van Pelt - Software Developer",
+  title: 'Graham Van Pelt - Software Developer',
   description: "Portfolio including Graham Van Pelt's apps and projects",
 }
 
