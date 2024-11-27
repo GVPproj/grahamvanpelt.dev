@@ -1,3 +1,5 @@
 export * from './icons'
 export * from './animations'
 export { default as CvNav } from './CvNav'
+export { default as PortfolioItem } from './PortfolioItem'
+export { default as Laptop } from './Laptop'
