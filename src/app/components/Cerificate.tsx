@@ -1,6 +1,5 @@
 'use client'
 
-// import Confetti from "react-confetti"
 import JSConfetti from 'js-confetti'
 import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
@@ -11,20 +10,25 @@ type CertificateProps = {
 }
 
 export default function Certificate(props: CertificateProps) {
-  const canvasRef = useRef<any>(null)
-  const confettiRef = useRef<any>(null)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const confettiRef = useRef<JSConfetti | null>(null)
   const [isCelebrating, setIsCelebrating] = useState(false)
 
   useEffect(() => {
+    // @ts-expect-error - JSConfetti is not typed
     confettiRef.current = new JSConfetti({ canvas: canvasRef.current })
-  }, [])
+  }, [canvasRef, isCelebrating])
 
   const handleClick = () => {
+    if (!confettiRef.current) return
+    setIsCelebrating(true)
+
     confettiRef.current.addConfetti({
       confettiRadius: 4,
       confettiNumber: 100,
     })
   }
+
   return (
     <div className="relative">
       {isCelebrating && (
@@ -34,7 +38,6 @@ export default function Certificate(props: CertificateProps) {
         className="relative cursor-pointer bg-none"
         onClick={() => {
           handleClick()
-          setIsCelebrating(true)
           setIsCelebrating(false)
         }}
       >
