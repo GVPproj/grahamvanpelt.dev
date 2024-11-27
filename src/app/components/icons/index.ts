@@ -1,0 +1,5 @@
+export { default as DocIcon } from './DocIcon'
+export { default as Github } from './Github'
+export { default as Email } from './Email'
+export { default as Music } from './Music'
+export { default as LinkedIn } from './LinkedIn'
