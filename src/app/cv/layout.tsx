@@ -1,8 +1,15 @@
 import { type ReactNode } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { DocIcon, Music, Github, Email, LinkedIn, CvNav } from '../components'
-import FadeIn from '../components/FadeIn'
+import {
+  DocIcon,
+  Music,
+  Github,
+  Email,
+  LinkedIn,
+  CvNav,
+  FadeIn,
+} from '../components'
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (

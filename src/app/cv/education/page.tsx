@@ -1,5 +1,4 @@
-import { Certificate } from '@/app/components'
-import FadeIn from '@/app/components/FadeIn'
+import { Certificate, FadeIn } from '@/app/components'
 import Link from 'next/link'
 
 const Page = () => {

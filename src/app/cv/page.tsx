@@ -1,4 +1,4 @@
-import FadeUp from '../components/FadeUp'
+import { FadeUp } from '../components'
 
 const Page = () => {
   return (
