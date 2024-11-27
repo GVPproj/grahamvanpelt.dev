@@ -65,7 +65,9 @@ export default function SiteHeader() {
         <Link
           href="cv"
           aria-label="Go to my CV."
-          className={currentPath === '/cv' ? 'text-skin-accent' : 'navLink'}
+          className={
+            currentPath.startsWith('/cv') ? 'text-skin-accent' : 'navLink'
+          }
         >
           CV
         </Link>
