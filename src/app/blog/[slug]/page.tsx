@@ -3,11 +3,14 @@ import { getPb } from '@/app/data/pocketbaseUtils'
 import Markdown from 'markdown-to-jsx'
 import React from 'react'
 
-const Post = async ({ params }: { params: { slug: string } }) => {
+type Params = Promise<{ slug: string[] }>
+
+const Post = async ({ params }: { params: Params }) => {
+  const { slug } = await params
   const pb = getPb()
   const record = await pb
     .collection('markdownPosts')
-    .getFirstListItem(`slug="${params.slug}"`, {})
+    .getFirstListItem(`slug="${slug}"`, {})
 
   return (
     <article className="mx-auto flex flex-col">
