@@ -17,6 +17,9 @@ importers:
       js-confetti:
         specifier: ^0.12.0
         version: 0.12.0
+      markdown-to-jsx:
+        specifier: ^7.7.0
+        version: 7.7.0(react@19.0.0-rc-66855b96-20241106)
       next:
         specifier: 15.0.3
         version: 15.0.3(react-dom@19.0.0-rc-66855b96-20241106(react@19.0.0-rc-66855b96-20241106))(react@19.0.0-rc-66855b96-20241106)
@@ -1456,6 +1459,12 @@ packages:
 
   lru-cache@10.4.3:
     resolution: {integrity: sha512-JNAzZcXrCt42VGLuYz0zfAzDfAvJWW6AfYlDBQyDV5DClI2m5sAmK+OIO7s59XfsRsWHp02jAJrRadPRGTt6SQ==}
+
+  markdown-to-jsx@7.7.0:
+    resolution: {integrity: sha512-130nIMbJY+woOQJ11xTqEtYko60t6EpNkZuqjKMferL3udtob3nRfzXOdsiA26NPemiR7w/hR8M3/B9yiYPGZg==}
+    engines: {node: '>= 10'}
+    peerDependencies:
+      react: '>= 0.14.0'
 
   merge2@1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
@@ -3603,6 +3612,10 @@ snapshots:
       js-tokens: 4.0.0
 
   lru-cache@10.4.3: {}
+
+  markdown-to-jsx@7.7.0(react@19.0.0-rc-66855b96-20241106):
+    dependencies:
+      react: 19.0.0-rc-66855b96-20241106
 
   merge2@1.4.1: {}
 
