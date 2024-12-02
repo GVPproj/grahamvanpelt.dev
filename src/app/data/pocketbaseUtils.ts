@@ -1,9 +1,9 @@
-// import PocketBase from "pocketbase"
-// const pb = new PocketBase(import.meta.env.VITE_PB_URL)
+import PocketBase from 'pocketbase'
+const pb = new PocketBase(process.env.POCKETBASE_URL)
 
-// export const getPb = () => {
-//   return pb
-// }
+export const getPb = () => {
+  return pb
+}
 // export const checkIfLoggedIn = (): boolean => {
 //   return pb.authStore.isValid
 // }

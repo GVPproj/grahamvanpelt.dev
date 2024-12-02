@@ -64,6 +64,15 @@ export default function SiteHeader() {
         >
           Portfolio
         </Link>
+        <Link
+          href="/blog"
+          aria-label="Go to the Blog."
+          className={
+            currentPath.startsWith('/blog') ? 'text-skin-accent' : 'navLink'
+          }
+        >
+          Blog
+        </Link>
       </nav>
       <DropdownMenu.Root open={showNav} onOpenChange={setShowNav}>
         <DropdownMenu.Trigger className="rounded px-1.5 focus:bg-skin-fill-muted focus:outline-none md:hidden">
@@ -128,6 +137,9 @@ export default function SiteHeader() {
                     </Link>
                     <Link href="portfolio" className="max-w-max">
                       <Item closeMenu={closeMenu}>Portfolio</Item>
+                    </Link>
+                    <Link href="blog" className="max-w-max">
+                      <Item closeMenu={closeMenu}>Blog</Item>
                     </Link>
                   </>
                 )}
