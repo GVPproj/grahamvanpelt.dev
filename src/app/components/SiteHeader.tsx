@@ -56,7 +56,7 @@ export default function SiteHeader() {
           CV
         </Link>
         <Link
-          href="portfolio"
+          href="/portfolio"
           aria-label="Go to the Portfolio page."
           className={
             currentPath === '/portfolio' ? 'text-skin-accent' : 'navLink'
@@ -135,10 +135,10 @@ export default function SiteHeader() {
                     <Link href="cv" className="max-w-max">
                       <Item closeMenu={closeMenu}>CV</Item>
                     </Link>
-                    <Link href="portfolio" className="max-w-max">
+                    <Link href="/portfolio" className="max-w-max">
                       <Item closeMenu={closeMenu}>Portfolio</Item>
                     </Link>
-                    <Link href="blog" className="max-w-max">
+                    <Link href="/blog" className="max-w-max">
                       <Item closeMenu={closeMenu}>Blog</Item>
                     </Link>
                   </>
