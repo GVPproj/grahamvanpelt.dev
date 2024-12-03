@@ -13,25 +13,24 @@ const CvNav = () => {
         href={currentPath === '/cv' ? '/cv' : '.'}
         // replace
         // end
-        // className={({ isActive }) =>
-        //   isActive
-        //     ? 'text-skin-accent no-underline'
-        //     : 'text-skin-base no-underline'
-        // }
+        className={
+          currentPath === '/cv'
+            ? 'text-skin-accent no-underline'
+            : 'text-skin-base no-underline'
+        }
       >
         Experience
       </Link>
       <Link
         href={currentPath === '/cv/education' ? 'education' : 'cv/education'}
-
         // href="cv/education"
         // end
         // preventScrollReset
-        // className={({ isActive }) =>
-        //   isActive
-        //     ? 'text-skin-accent no-underline'
-        //     : 'text-skin-base no-underline'
-        // }
+        className={
+          currentPath === '/cv/education'
+            ? 'text-skin-accent no-underline'
+            : 'text-skin-base no-underline'
+        }
       >
         Education
       </Link>

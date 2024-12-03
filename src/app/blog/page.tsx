@@ -6,10 +6,11 @@ const Blog = async () => {
   const { items: posts } = await pb.collection('markdownPosts').getList(1, 50, {
     filter: 'created >= "2022-01-01 00:00:00"',
     fields: 'id, title, slug, created',
+    sort: '-created',
   })
 
   return (
-    <section className="flex flex-col gap-4">
+    <section className="flex flex-col gap-12">
       <>
         {posts.map((post) => {
           return (
