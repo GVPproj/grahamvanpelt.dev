@@ -14,9 +14,13 @@ const Blog = async () => {
       <>
         {posts.map((post) => {
           return (
-            <Link href={`/blog/${post.slug}`} key={post.id}>
-              <h2 className="text-xl font-bold">{post.title}</h2>
-              <h2 className="text-base font-semibold">
+            <Link
+              href={`/blog/${post.slug}`}
+              key={post.id}
+              className="text-skin-base hover:text-skin-accent"
+            >
+              <h2 className="text-lg font-bold">{post.title}</h2>
+              <h2 className="text-sm font-semibold">
                 {new Date(post.created).toLocaleDateString('en-CA', {
                   month: 'long',
                   day: 'numeric',
