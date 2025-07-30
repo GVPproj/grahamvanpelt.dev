@@ -1,0 +1,7 @@
+export { default as benFreySample } from './Ben Frey sample - Tipbox.jpg'
+export { default as laptopMobileMockup } from './Laptop-+-Mobile-mockup.png'
+export { default as laptop } from './Laptop.png'
+export { default as noLookingBack } from './No Looking Back.png'
+export { default as noFlashyChaos } from './No-Flashy-Chaos.png'
+export { default as noLookingBackAlt } from './No-Looking-Back.png'
+export { default as laptopSlideshow } from './_Laptop-slideshow-2.gif'
