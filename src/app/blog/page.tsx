@@ -10,7 +10,7 @@ const Blog = async () => {
   })
 
   return (
-    <section className="flex flex-col gap-12">
+    <section className="flex flex-col gap-12 px-6">
       <>
         {posts.map((post) => {
           return (

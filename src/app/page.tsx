@@ -4,8 +4,8 @@ import { Face, FadeUp, SpanCycle } from './components'
 export default function Home() {
   return (
     <FadeUp id="hero" delay="delay-150">
-      <>
-        <section className="mb-16 flex flex-col items-center gap-8 text-skin-base hover:text-skin-base md:flex-row md:justify-between">
+      <div className="px-6">
+        <section className="flex flex-col items-center gap-8 text-skin-base hover:text-skin-base md:mb-16 md:flex-row md:justify-between">
           <p className="min-w-[320px] font-serif text-4xl font-semibold md:max-w-[20ch] md:text-5xl">
             A{' '}
             <span className="italic text-skin-accent">Software Developer</span>
@@ -41,7 +41,7 @@ export default function Home() {
             .
           </p>
         </section>
-      </>
+      </div>
     </FadeUp>
   )
 }

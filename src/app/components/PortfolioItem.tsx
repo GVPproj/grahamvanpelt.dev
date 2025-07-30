@@ -23,7 +23,7 @@ interface Props {
 export default function PortfolioItem(props: Props) {
   return (
     <>
-      <div className="my-24 md:my-36">
+      <div className="my-24 px-6 md:my-36">
         <div className="flex flex-col gap-12 xl:flex-row">
           {props.screenshot && (
             <div className="min-w-max">

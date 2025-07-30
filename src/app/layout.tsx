@@ -28,8 +28,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <SiteHeader />
-        <main>{children}</main>
+        <div className="w-full max-w-screen-lg">
+          <SiteHeader />
+        </div>
+        <main className="wrapper">{children}</main>
         <SiteFooter />
       </body>
     </html>

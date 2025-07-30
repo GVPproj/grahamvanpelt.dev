@@ -14,7 +14,7 @@ import {
 export default function Layout({ children }: { children: ReactNode }) {
   return (
     <FadeIn>
-      <section className="flex flex-col justify-between gap-12 lg:flex-row">
+      <section className="flex flex-col justify-between gap-12 px-6 lg:flex-row">
         <aside className="mx-auto flex flex-col font-sans lg:mx-0 lg:w-1/4">
           <Image
             className="mx-auto my-0 aspect-square h-36 w-36 overflow-hidden rounded-full bg-skin-accent p-1 lg:mx-0"
