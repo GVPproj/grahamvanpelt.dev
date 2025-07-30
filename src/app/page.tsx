@@ -19,7 +19,22 @@ export default function Home() {
           <p className="prose-xl">
             👋 Hi, I&apos;m Graham, a web developer based on beautiful{' '}
             <span className="font-semibold not-italic">Salt Spring Island</span>{' '}
-            in western Canada. I use{' '}
+            in western Canada. For the past couple of years I've worked at{' '}
+            <Link
+              href="https://www.tipbox.io"
+              aria-label="Go to my portfolio page."
+              className="font-serif font-extrabold italic"
+            >
+              Tipbox.io
+            </Link>{' '}
+            as{' '}
+            <span className="font-semibold not-italic">
+              Full Stack Developer
+            </span>
+            . We're building a Task Management and Visual File Sharing platform
+            for production teams.
+            <br />
+            <br />I use
             <span className="font-semibold not-italic">React</span> with{' '}
             <span className="font-semibold not-italic">TypeScript</span> to
             build satisfying and accessible web experiences. Visit my{' '}

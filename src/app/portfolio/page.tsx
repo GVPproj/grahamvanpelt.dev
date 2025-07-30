@@ -2,11 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import { PortfolioItem, FadeIn, FadeUp } from '../components'
 import { portfolioItems } from '../data/portfolioData'
-import {
-  laptopMobileMockup,
-  benFreySample,
-  laptop,
-} from '@/images/Ben_TB_Assets'
+import { benFreySample, laptop } from '@/images/Ben_TB_Assets'
 import Link from 'next/link'
 
 export const metadata = {
