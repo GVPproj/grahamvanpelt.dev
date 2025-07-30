@@ -31,17 +31,15 @@ const Portfolio = () => {
   return (
     <>
       <FadeIn>
-        <div className="flex w-full items-center justify-between px-6">
-          <div className="flex flex-col gap-12">
-            <h1 className="text-2xl font-extrabold md:text-4xl">
-              <Link
-                href="https://www.tipbox.io"
-                aria-label="Go to my portfolio page."
-                className="font-serif italic underline"
-              >
-                Tipbox.io
-              </Link>
-            </h1>
+        <div className="flex w-full flex-col items-center justify-between gap-8 px-6 md:flex-row md:gap-0">
+          <div className="flex w-full flex-col gap-12">
+            <Link
+              href="https://www.tipbox.io"
+              aria-label="Go to my portfolio page."
+              className="font-serif text-5xl font-extrabold italic"
+            >
+              Tipbox.io
+            </Link>
             <p className="max-w-[40ch]">
               Your production team's best friend – take all the headaches out of
               visual file sharing, task tracking, and project management.
@@ -50,7 +48,7 @@ const Portfolio = () => {
           <Image
             src={laptop}
             alt="Tipbox.io laptop and mobile mockup"
-            className="w-[300px] max-w-[40vw] md:w-[500px]"
+            className="w-full md:w-[500px]"
           />
         </div>
       </FadeIn>
