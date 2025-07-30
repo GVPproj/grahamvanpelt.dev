@@ -126,3 +126,32 @@ span {
   src: url('./fonts/wotfard/wotfard-bold-webfont.woff2') format('woff2');
   font-style: normal;
 }
+
+.typeme {
+  display: inline-block;
+  animation: 
+    type-and-delete 5s steps(var(--typing-steps, 20), end),
+    blink 0.5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid var(--colour-accent);
+  width: 0;
+  max-width: var(--typing-width, 200px);
+}
+
+@keyframes type-and-delete {
+  0% { 
+    width: 0; 
+  }
+  20% { 
+    width: var(--typing-width, 200px);
+  }
+  60% { 
+    width: var(--typing-width, 200px);
+  }
+  100% { width: 0; }
+}
+
+@keyframes blink {
+  50% { border-color: transparent; }
+}

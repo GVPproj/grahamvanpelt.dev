@@ -11,7 +11,7 @@ export default function Home() {
             <span className="italic text-skin-accent">Software Developer</span>
             {', '}
             building for the web with <br />
-            <SpanCycle />.
+            <SpanCycle />
           </p>
           <Face />
         </section>
