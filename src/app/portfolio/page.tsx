@@ -2,7 +2,12 @@ import React from 'react'
 import Image from 'next/image'
 import { PortfolioItem, FadeIn, FadeUp } from '../components'
 import { portfolioItems } from '../data/portfolioData'
-import { laptopMobileMockup, benFreySample } from '@/images/Ben_TB_Assets'
+import {
+  laptopMobileMockup,
+  benFreySample,
+  laptop,
+} from '@/images/Ben_TB_Assets'
+import Link from 'next/link'
 
 export const metadata = {
   title: 'Graham Van Pelt - Portfolio',
@@ -26,10 +31,27 @@ const Portfolio = () => {
   return (
     <>
       <FadeIn>
-        <div className="flex flex-col gap-12 pl-6">
-          <h1 className="text-2xl font-extrabold md:text-4xl">
-            <span>Tipbox.io</span>
-          </h1>
+        <div className="flex w-full items-center justify-between px-6">
+          <div className="flex flex-col gap-12">
+            <h1 className="text-2xl font-extrabold md:text-4xl">
+              <Link
+                href="https://www.tipbox.io"
+                aria-label="Go to my portfolio page."
+                className="font-serif italic underline"
+              >
+                Tipbox.io
+              </Link>
+            </h1>
+            <p className="max-w-[40ch]">
+              Your production team's best friend – take all the headaches out of
+              visual file sharing, task tracking, and project management.
+            </p>
+          </div>
+          <Image
+            src={laptop}
+            alt="Tipbox.io laptop and mobile mockup"
+            className="w-[300px] max-w-[40vw] md:w-[500px]"
+          />
         </div>
       </FadeIn>
       <Image
