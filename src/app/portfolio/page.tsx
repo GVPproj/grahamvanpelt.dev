@@ -37,7 +37,7 @@ const Portfolio = () => {
               Tipbox.io
             </Link>
             <p className="max-w-[40ch]">
-              Your production team's best friend – take all the headaches out of
+              Your production team&apos;s best friend – take all the headaches out of
               visual file sharing, task tracking, and project management.
             </p>
           </div>

@@ -19,7 +19,7 @@ export default function Home() {
           <p className="prose-xl">
             👋 Hi, I&apos;m Graham, a web developer based on beautiful{' '}
             <span className="font-semibold not-italic">Salt Spring Island</span>{' '}
-            in western Canada. For the past couple of years I've worked at{' '}
+            in western Canada. For the past couple of years I&apos;ve worked at{' '}
             <Link
               href="https://www.tipbox.io"
               aria-label="Go to my portfolio page."
@@ -31,7 +31,7 @@ export default function Home() {
             <span className="font-semibold not-italic">
               Full Stack Developer
             </span>
-            . We're building a Task Management and Visual File Sharing platform
+            . We&apos;re building a Task Management and Visual File Sharing platform
             for production teams.
             <br />
             <br />I use
