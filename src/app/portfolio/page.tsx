@@ -53,8 +53,9 @@ const Portfolio = () => {
         alt="Tipbox.io laptop and mobile mockup"
         className="full-bleed my-16"
       />
+      <PortfolioDivider />
       <FadeUp id="client">
-        <h1 className="pl-6 text-2xl font-extrabold md:text-4xl">
+        <h1 className="mt-12 pl-6 text-2xl font-extrabold md:text-4xl">
           <span>Client websites</span> and <span>personal projects</span>
         </h1>
       </FadeUp>

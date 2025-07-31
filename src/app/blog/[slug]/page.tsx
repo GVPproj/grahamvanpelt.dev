@@ -13,7 +13,7 @@ const Post = async ({ params }: { params: Params }) => {
     .getFirstListItem(`slug="${slug}"`, {})
 
   return (
-    <article className="mx-auto flex flex-col">
+    <article className="mx-auto flex flex-col px-6">
       <div className="prose mx-auto">
         <h1 className="mb-0 text-4xl font-bold text-skin-accent">
           {record.title}

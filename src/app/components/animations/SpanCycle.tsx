@@ -3,16 +3,20 @@
 import { useEffect, useState } from 'react'
 
 const toolList = [
-  'ReactJS',
-  'Accessible UI',
+  'React',
+  'Accessible HTML',
   'Typescript',
-  'Graphql',
+  'Motion.dev',
   'Postgres',
-  'TailwindCSS',
+  'Tailwind',
+  'AI',
+  'Python',
+  'SQLite',
+  'FastAPI',
   'Astro',
   'Prisma',
-  'HTML',
-  'Remix',
+  'Chakra UI',
+  'GraphQl',
 ]
 
 export default function SpanCycle() {
@@ -61,7 +65,7 @@ export default function SpanCycle() {
       {displayText}
       <span
         className="relative inline-block translate-y-[2px] animate-pulse overflow-hidden pl-1 not-italic"
-        style={{ height: '0.8em', verticalAlign: 'center' }}
+        style={{ height: '0.9em', verticalAlign: 'center' }}
       >
         |
       </span>
