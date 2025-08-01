@@ -1,12 +1,12 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
+import { motion } from 'framer-motion'
 
 export default function Face() {
   return (
     <svg
       viewBox="0 0 350 500"
-      className="h-[340px] w-[300px] shrink-0 md:order-last "
+      className="my-8 h-[340px] w-[300px] shrink-0 md:order-last md:my-0"
     >
       <title>A one- line portrait of my face</title>
       <g>
@@ -24,5 +24,5 @@ export default function Face() {
         </g>
       </g>
     </svg>
-  );
+  )
 }

@@ -1,9 +1,12 @@
 import React from 'react'
 import Image from 'next/image'
 import { PortfolioItem, FadeIn, FadeUp } from '../components'
+import { TipboxLogo } from '../components/icons'
 import { portfolioItems } from '../data/portfolioData'
-import { benFreySample, laptop } from '@/images/Ben_TB_Assets'
 import Link from 'next/link'
+
+const benFreySample = '/images/tipbox/Ben Frey sample - Tipbox.jpg'
+const laptop = '/images/tipbox/Laptop.png'
 
 export const metadata = {
   title: 'Graham Van Pelt - Portfolio',
@@ -31,19 +34,21 @@ const Portfolio = () => {
           <div className="flex w-full flex-col gap-12">
             <Link
               href="https://www.tipbox.io"
-              aria-label="Go to my portfolio page."
-              className="font-serif text-5xl font-extrabold italic"
+              aria-label="Go to Tipbox.io"
+              className="inline-block text-skin-base transition-colors duration-200 hover:text-skin-highlight"
             >
-              Tipbox.io
+              <TipboxLogo className="h-12 w-auto" />
             </Link>
             <p className="max-w-[40ch]">
-              Your production team&apos;s best friend – take all the headaches out of
-              visual file sharing, task tracking, and project management.
+              Your production team&apos;s best friend – take all the headaches
+              out of visual file sharing, task tracking, and project management.
             </p>
           </div>
           <Image
             src={laptop}
             alt="Tipbox.io laptop and mobile mockup"
+            width={500}
+            height={300}
             className="w-full md:w-[500px]"
           />
         </div>
@@ -51,6 +56,8 @@ const Portfolio = () => {
       <Image
         src={benFreySample}
         alt="Tipbox.io laptop and mobile mockup"
+        width={1200}
+        height={600}
         className="full-bleed my-16"
       />
       <PortfolioDivider />
