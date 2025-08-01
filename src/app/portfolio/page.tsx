@@ -7,6 +7,11 @@ import Link from 'next/link'
 
 const benFreySample = '/images/tipbox/Ben Frey sample - Tipbox.jpg'
 const laptop = '/images/tipbox/Laptop.png'
+const laptopMobileMockup = '/images/tipbox/Laptop-+-Mobile-mockup.png'
+const noLookingBack = '/images/tipbox/No Looking Back.png'
+const noFlashyChaos = '/images/tipbox/No-Flashy-Chaos.png'
+const noLookingBackAlt = '/images/tipbox/No-Looking-Back.png'
+const laptopSlideshow = '/images/tipbox/_Laptop-slideshow-2.gif'
 
 export const metadata = {
   title: 'Graham Van Pelt - Portfolio',
@@ -41,7 +46,8 @@ const Portfolio = () => {
             </Link>
             <p className="max-w-[40ch]">
               Your production team&apos;s best friend – take all the headaches
-              out of visual file sharing, task tracking, and project management.
+              out of file sharing, task tracking, workflows and project
+              management.
             </p>
           </div>
           <Image
@@ -50,6 +56,33 @@ const Portfolio = () => {
             width={500}
             height={300}
             className="w-full md:w-[500px]"
+          />
+        </div>
+      </FadeIn>
+      <FadeIn>
+        <div className="my-12 flex w-full flex-col justify-between gap-8 md:flex-row">
+          <article className="flex w-full flex-col gap-4 px-6">
+            <h3 className="text-2xl text-skin-base">My Role</h3>
+            <p>
+              As a Full-Stack Engineer and Product Experience Lead at Tipbox, I
+              architected and delivered end-to-end solutions for a collaborative
+              document and tasks platform. My hundreds of commits span the
+              frontend and backend, encompassing an entire task management
+              ecosystem—from GraphQL schema design to React component
+              implementation. I've owned database optimization, API development,
+              UI state management, and UX design, leading architectural
+              decisions and enhancing authentication flows. Bridging product
+              vision with technical execution, I deliver complex features,
+              integrating AWS, PostgreSQL, and React/TypeScript for robust
+              performance and exceptional user experience.
+            </p>
+          </article>
+          <Image
+            src={noLookingBack}
+            width={400}
+            height={238}
+            alt="No looking back"
+            className="my-auto h-full w-auto object-contain pr-0 md:pr-6"
           />
         </div>
       </FadeIn>
