@@ -7,11 +7,11 @@ import Link from 'next/link'
 
 const benFreySample = '/images/tipbox/Ben Frey sample - Tipbox.jpg'
 const laptop = '/images/tipbox/Laptop.png'
-const laptopMobileMockup = '/images/tipbox/Laptop-+-Mobile-mockup.png'
+// const laptopMobileMockup = '/images/tipbox/Laptop-+-Mobile-mockup.png'
 const noLookingBack = '/images/tipbox/No Looking Back.png'
-const noFlashyChaos = '/images/tipbox/No-Flashy-Chaos.png'
-const noLookingBackAlt = '/images/tipbox/No-Looking-Back.png'
-const laptopSlideshow = '/images/tipbox/_Laptop-slideshow-2.gif'
+// const noFlashyChaos = '/images/tipbox/No-Flashy-Chaos.png'
+// const noLookingBackAlt = '/images/tipbox/No-Looking-Back.png'
+// const laptopSlideshow = '/images/tipbox/_Laptop-slideshow-2.gif'
 
 export const metadata = {
   title: 'Graham Van Pelt - Portfolio',
@@ -69,12 +69,13 @@ const Portfolio = () => {
               document and tasks platform. My hundreds of commits span the
               frontend and backend, encompassing an entire task management
               ecosystem—from GraphQL schema design to React component
-              implementation. I've owned database optimization, API development,
-              UI state management, and UX design, leading architectural
-              decisions and enhancing authentication flows. Bridging product
-              vision with technical execution, I deliver complex features,
-              integrating AWS, PostgreSQL, and React/TypeScript for robust
-              performance and exceptional user experience.
+              implementation. I&apos;ve owned database optimization, API
+              development, UI state management, and UX design, leading
+              architectural decisions and enhancing authentication flows.
+              Bridging product vision with technical execution, I deliver
+              complex features, integrating AWS, PostgreSQL, and
+              React/TypeScript for robust performance and exceptional user
+              experience.
             </p>
           </article>
           <Image
