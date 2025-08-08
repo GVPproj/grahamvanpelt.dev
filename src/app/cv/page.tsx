@@ -13,16 +13,57 @@ const Page = () => {
               and tv industries
             </li>
             <li>
-              create satisfying user interactions using React and ChakraUI
-            </li>
-            <li>
               update a postgres db and create graphql APIs with Prisma and
               Apollo
             </li>
             <li>animate interactions with Framer Motion</li>
             <li>
-              work closely with the product design team to enhance UX, theming
-              and consistency
+              Built a comprehensive task management and workflow system for
+              real-time collaboration, including task assignment, approval
+              workflows, comment threads with file attachments, and user
+              &quot;@&quot; mentioning
+            </li>
+            <li>
+              Developed a full-featured organization administration panel with
+              role-based permissions (ABAC), user invitation management,
+              organization switching, and granular access controls, enabling
+              enterprise-level user and content management
+            </li>
+            <li>
+              Implemented the frontend of an AI-powered natural language search
+              system using AWS Bedrock, providing automated content tagging with
+              PostgreSQL query generation, enabling users to find relevant
+              content through conversational queries
+            </li>
+            <li>
+              Led platform-wide UI/UX redesign initiatives including responsive
+              login/signup flows, dashboard layouts, and task management
+              interfaces, implementing accessibility improvements and keyboard
+              navigation across hundreds of components
+            </li>
+            <li>
+              Optimized application performance through Redux state management
+              refactoring, Vite build system migration, and component re-render
+              reduction, achieving measurable performance improvements in
+              data-heavy interfaces
+            </li>
+            <li>
+              Implemented real-time notification system with digest emails, user
+              feedback collection with metadata tracking, and multi-organization
+              account switching, enhancing user engagement and platform
+              usability
+            </li>
+            <li>
+              Enhanced codebase type safety by systematically replacing loose
+              TypeScript types, implementing strict typing patterns, and
+              establishing type-safe GraphQL code generation workflows, reducing
+              runtime errors and improving developer experience
+            </li>
+            <li>
+              Delivered responsive web components with embedded media support
+              (video, audio, PDF), searchable data interfaces, and collaborative
+              document editing, enabling seamless multimedia content creation
+              and sharing workflows
             </li>
           </ul>
         </>
