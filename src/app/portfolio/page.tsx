@@ -7,10 +7,10 @@ import Link from 'next/link'
 
 const benFreySample = '/images/tipbox/Ben Frey sample - Tipbox.jpg'
 const laptop = '/images/tipbox/Laptop.png'
-const laptopMobileMockup = '/images/tipbox/Laptop-+-Mobile-mockup.png'
+// const laptopMobileMockup = '/images/tipbox/Laptop-+-Mobile-mockup.png'
 const noLookingBack = '/images/tipbox/No Looking Back.png'
-const noFlashyChaos = '/images/tipbox/No-Flashy-Chaos.png'
-const noLookingBackAlt = '/images/tipbox/No-Looking-Back.png'
+// const noFlashyChaos = '/images/tipbox/No-Flashy-Chaos.png'
+// const noLookingBackAlt = '/images/tipbox/No-Looking-Back.png'
 const laptopSlideshow = '/images/tipbox/_Laptop-slideshow-2.gif'
 
 export const metadata = {
