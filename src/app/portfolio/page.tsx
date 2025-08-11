@@ -84,7 +84,7 @@ const Portfolio = () => {
               width={600}
               height={438}
               alt="No looking back"
-              className="my-auto h-full w-auto object-contain"
+              className="my-auto h-full w-auto object-contain px-6 md:p-0"
             />
           </div>
 
@@ -98,7 +98,7 @@ const Portfolio = () => {
               className="ml-6 mt-8 h-full w-full self-center rounded-lg object-contain lg:mb-0 lg:ml-0"
             />
             <article className="flex w-full flex-col gap-4 px-0 lg:px-6">
-              <ul className="w-full min-w-max list-none text-lg lg:text-right">
+              <ul className="w-full list-none text-lg md:min-w-max lg:text-right">
                 {' '}
                 <li className="border-skin-fill-muted border-b pb-2">
                   <span className="font-semibold not-italic">
