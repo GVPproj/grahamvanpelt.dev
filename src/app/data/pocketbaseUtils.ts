@@ -4,13 +4,3 @@ const pb = new PocketBase(process.env.POCKETBASE_URL)
 export const getPb = () => {
   return pb
 }
-// export const checkIfLoggedIn = (): boolean => {
-//   return pb.authStore.isValid
-// }
-// export const logout = () => {
-//   pb.authStore.clear()
-// }
-
-// export async function initiateSignUp() {
-//   await pb.collection("users").authWithOAuth2({ provider: "github" })
-// }
