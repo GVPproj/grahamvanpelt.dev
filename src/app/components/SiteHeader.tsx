@@ -1,7 +1,6 @@
 'use client'
 
 import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
-// import { NavLink } from "@remix-run/react";
 import React, { ReactNode, useEffect, useState } from 'react'
 import {
   motion,
@@ -12,6 +11,7 @@ import {
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Sig } from '@/app/components'
+import { Github } from './icons'
 
 const sleep = (s: number) =>
   new Promise((resolve) => setTimeout(resolve, s * 1000))
@@ -73,6 +73,15 @@ export default function SiteHeader() {
         >
           Blog
         </Link>
+        <a
+          href="https://github.com/GVPproj"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit my GitHub profile"
+          className="navLink self-center"
+        >
+          <Github className="h-8 w-8" />
+        </a>
       </nav>
       <DropdownMenu.Root open={showNav} onOpenChange={setShowNav}>
         <DropdownMenu.Trigger className="rounded px-1.5 focus:bg-skin-fill-muted focus:outline-none md:hidden">
@@ -141,6 +150,15 @@ export default function SiteHeader() {
                     <Link href="/blog" className="max-w-max">
                       <Item closeMenu={closeMenu}>Blog</Item>
                     </Link>
+                    <a
+                      href="https://github.com/GVPproj"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Visit my GitHub profile"
+                      className="max-w-max"
+                    >
+                      <Github className="h-8 w-8" />
+                    </a>
                   </>
                 )}
               </motion.div>
@@ -181,7 +199,7 @@ function Item({
           await sleep(0.4)
         }
 
-        await closeMenu()
+        closeMenu()
         onSelect()
       }}
       asChild
