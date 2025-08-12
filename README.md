@@ -1,15 +1,15 @@
 # grahamvanpelt.dev
 
-![Graham Van Pelt](public/images/facePreview.png)
+[![Graham Van Pelt](public/images/facePreview.png)](https://grahamvanpelt.dev)
 
-## Full Stack Developer | Salt Spring Island, Canada
+## My dev blog and portfolio
 
-[🌐 Live Site](https://grahamvanpelt.dev)
+See what I'm up to these days...
 
 ## Tech Stack
 
 - **Framework**: Next.js 15 with React 19
-- **Styling**: TailwindCSS with custom design tokens
+- **Styling**: TailwindCSS
 - **Animation**: Framer Motion
 - **Database**: PocketBase
 - **Deployment**: Netlify
