@@ -14,7 +14,7 @@ const Post = async ({ params }: { params: Params }) => {
 
   return (
     <article className="mx-auto flex max-w-full flex-col px-6">
-      <div className="prose mx-auto">
+      <div className="prose mx-auto w-full justify-self-start md:max-w-prose">
         <h1 className="mb-0 text-4xl font-bold text-skin-accent">
           {record.title}
         </h1>
@@ -26,7 +26,7 @@ const Post = async ({ params }: { params: Params }) => {
           })}
         </h2>
       </div>
-      <div className="prose mx-auto max-w-full text-skin-base prose-headings:text-skin-base prose-h1:text-skin-accent prose-a:text-skin-accent prose-a:no-underline prose-strong:text-skin-base prose-code:bg-skin-fill-muted prose-code:text-skin-base prose-code:before:content-none prose-code:after:content-none prose-pre:bg-skin-fill-muted">
+      <div className="prose mx-auto max-w-full text-skin-base prose-headings:text-skin-base prose-h1:text-skin-accent prose-a:text-skin-accent prose-a:no-underline prose-strong:text-skin-base prose-code:bg-skin-fill-muted prose-code:text-skin-base prose-code:before:content-none prose-code:after:content-none prose-pre:bg-skin-fill-muted md:max-w-prose">
         <Markdown
           options={{
             overrides: {
