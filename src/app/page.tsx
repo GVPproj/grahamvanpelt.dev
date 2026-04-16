@@ -35,7 +35,7 @@ export default function Home() {
             for production teams.
             <br />
             <br />I use
-            <span className="font-semibold not-italic">React</span> with{' '}
+            <span className="font-semibold not-italic"> React</span> with{' '}
             <span className="font-semibold not-italic">TypeScript</span> to
             build satisfying and accessible web experiences. Visit my{' '}
             <Link
