@@ -34,8 +34,8 @@ export default function Home() {
             . We&apos;re building a Task Management and Visual File Sharing platform
             for production teams.
             <br />
-            <br />I use
-            <span className="font-semibold not-italic"> React</span> with{' '}
+            <br />I use{' '}
+            <span className="font-semibold not-italic">React</span> with{' '}
             <span className="font-semibold not-italic">TypeScript</span> to
             build satisfying and accessible web experiences. Visit my{' '}
             <Link
