@@ -1,0 +1,315 @@
+---
+import Layout from '../layouts/Layout.astro'
+import DocIcon from '../components/icons/DocIcon.astro'
+import Email from '../components/icons/Email.astro'
+import Github from '../components/icons/Github.astro'
+import LinkedIn from '../components/icons/LinkedIn.astro'
+import Music from '../components/icons/Music.astro'
+
+const contact = [
+  {
+    href: '/resume/GrahamVanPelt_CV.pdf',
+    label: 'My CV .pdf',
+    Icon: DocIcon,
+    download: true,
+  },
+  { href: 'mailto:grahamvanpelt@gmail.com', label: 'Email', Icon: Email },
+  {
+    href: 'https://github.com/GVPproj',
+    label: 'GitHub Profile',
+    Icon: Github,
+  },
+  {
+    href: 'https://www.linkedin.com/in/graham-van-pelt-39b37797/',
+    label: 'LinkedIn Profile',
+    Icon: LinkedIn,
+  },
+  {
+    href: 'https://links.grahamvanpelt.com/',
+    label: 'Music Page',
+    Icon: Music,
+  },
+]
+---
+
+<Layout
+  title="CV - Graham Van Pelt"
+  description="The working history of a full-stack developer: Tipbox.io, Mythical Voltage Games, and freelance client work, with a downloadable PDF."
+>
+  <h1 class="visually-hidden">CV</h1>
+  <div class="cv-container">
+    <div class="cv">
+    <aside>
+      <img
+        src="/images/graham.webp"
+        alt="My face smiling"
+        width="144"
+        height="144"
+      />
+      <p>
+        A front-end web developer who loves <strong>React</strong>. A game
+        developer specializing in <strong>Audio.</strong> A <strong
+          >Music-Lover</strong
+        > who releases albums and broadcasts a weekly radio show online.
+      </p>
+      <ul>
+        {
+          contact.map(({ href, label, Icon, download }) => (
+            <li>
+              <a
+                href={href}
+                download={download}
+                target={href.startsWith('http') ? '_blank' : undefined}
+                rel={href.startsWith('http') ? 'noreferrer' : undefined}
+              >
+                <Icon />
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </aside>
+
+    <section class="roles">
+      <section>
+        <h2>Software Developer @ Tipbox.io</h2>
+        <p class="dates">2023 - Present</p>
+        <ul>
+          <li>
+            building web ui for a collaborative platform targeting the film and
+            tv industries
+          </li>
+          <li>
+            update a postgres db and create graphql APIs with Prisma and Apollo
+          </li>
+          <li>animate interactions with Framer Motion</li>
+          <li>
+            Built a comprehensive task management and workflow system for
+            real-time collaboration, including task assignment, approval
+            workflows, comment threads with file attachments, and user
+            &quot;@&quot; mentioning
+          </li>
+          <li>
+            Developed a full-featured organization administration panel with
+            role-based permissions (ABAC), user invitation management,
+            organization switching, and granular access controls, enabling
+            enterprise-level user and content management
+          </li>
+          <li>
+            Implemented the frontend of an AI-powered natural language search
+            system using AWS Bedrock, providing automated content tagging with
+            PostgreSQL query generation, enabling users to find relevant content
+            through conversational queries
+          </li>
+          <li>
+            Led platform-wide UI/UX redesign initiatives including responsive
+            login/signup flows, dashboard layouts, and task management
+            interfaces, implementing accessibility improvements and keyboard
+            navigation across hundreds of components
+          </li>
+          <li>
+            Optimized application performance through Redux state management
+            refactoring, Vite build system migration, and component re-render
+            reduction, achieving measurable performance improvements in
+            data-heavy interfaces
+          </li>
+          <li>
+            Implemented real-time notification system with digest emails, user
+            feedback collection with metadata tracking, and multi-organization
+            account switching, enhancing user engagement and platform usability
+          </li>
+          <li>
+            Enhanced codebase type safety by systematically replacing loose
+            TypeScript types, implementing strict typing patterns, and
+            establishing type-safe GraphQL code generation workflows, reducing
+            runtime errors and improving developer experience
+          </li>
+          <li>
+            Delivered responsive web components with embedded media support
+            (video, audio, PDF), searchable data interfaces, and collaborative
+            document editing, enabling seamless multimedia content creation and
+            sharing workflows
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Web Developer / Audio Lead @ Mythical Voltage Games</h2>
+        <p class="dates">2020 - Present</p>
+        <ul>
+          <li>
+            crafting a company website with React, TailwindCSS, AstroJS and a
+            headless CMS
+          </li>
+          <li>
+            write C# scripts for music and audio events in the Unity game engine
+          </li>
+          <li>Git-based workflow with the development team</li>
+          <li>manage the company email setup via Hostinger</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Freelance Web Developer</h2>
+        <p class="dates">2020 - 2023</p>
+        <ul>
+          <li>
+            develop marketing and portfolio sites for entrepreneurs and small
+            businesses
+          </li>
+          <li>
+            produced a music festival page with AstroJS, React and TailwindCSS
+          </li>
+          <li>
+            built a B&amp;B marketing site using GatsbyJS, React and Styled
+            Components
+          </li>
+          <li>
+            crafted a Wordpress-based portfolio site for a game developer with
+            custom post types, dynamic content, and responsive design
+          </li>
+          <li>
+            Tooling includes ReactJS, Gatsby, Astro, Remix, TailwindCSS,
+            Wordpress and Elementor
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="qualifications">Qualifications</h2>
+        <ul>
+          <li>Strong TypeScript, Graphql, HTML and CSS programming skills</li>
+          <li>Extensive experience building with React</li>
+          <li>
+            Backend experience with a Postgres db using the Prisma ORM and
+            Apollo Graphql
+          </li>
+          <li>C# coding experience</li>
+          <li>Experience with Git workflows</li>
+          <li>Adherance to WCAG Accessibility Standards</li>
+          <li>NodeJS experience</li>
+          <li>Skilled with the Command Line</li>
+          <li>Scrimba Frontend Career Path, 2022&ndash;23</li>
+        </ul>
+      </section>
+      </section>
+    </div>
+  </div>
+</Layout>
+
+<style>
+  /* One of the two genuinely component-local layouts, so it queries its own
+     width rather than the viewport's. The wrapper carries container-type
+     because an element cannot query itself. */
+  .cv-container {
+    container-type: inline-size;
+  }
+
+  .cv {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 3rem;
+    padding-inline: 1.5rem;
+    font-family: var(--font-sans);
+  }
+
+  @container (width >= 56rem) {
+    .cv {
+      flex-direction: row;
+    }
+
+    aside {
+      /* 0 0 so the sidebar holds its width instead of being squeezed by the
+         long-content column, which has far more min-content than it does. */
+      flex: 0 0 25%;
+      margin-inline: 0;
+    }
+
+    .roles {
+      flex: 1;
+      min-width: 0;
+      margin-block-start: 0;
+    }
+
+    aside img {
+      margin-inline: 0;
+    }
+  }
+
+  aside {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-inline: auto;
+  }
+
+  aside img {
+    aspect-ratio: 1;
+    width: 9rem;
+    height: 9rem;
+    margin-inline: auto;
+    padding: 0.25rem;
+    border-radius: 9999px;
+    background-color: var(--colour-accent);
+    overflow: hidden;
+  }
+
+  aside ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  aside li a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .roles {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-block-start: 2rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+  }
+
+  .qualifications {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .dates {
+    margin-block: 0.25rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    font-weight: 600;
+    color: var(--colour-text-muted);
+  }
+
+  .roles ul {
+    padding-inline-start: 1.625rem;
+    list-style: disc;
+  }
+
+  .roles li {
+    margin-block: 0.5rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+</style>

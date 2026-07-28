@@ -1,0 +1,78 @@
+---
+import { toolList } from '../data/toolList'
+---
+
+<!-- The first word is server-rendered, so no-JS visitors (and the
+     reduced-motion branch below) get a real word rather than an empty gap. -->
+<span class="cycle"
+  ><span class="word">{toolList[0]}</span><span class="caret" aria-hidden="true"
+    >|</span
+  ></span
+>
+
+<script>
+  import { toolList } from '../data/toolList'
+
+  const word = document.querySelector<HTMLElement>('.cycle .word')
+
+  // This is the only never-ending animation on the site, which is exactly what
+  // the query is for: leave the server-rendered word and never start the loop.
+  if (word && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    const TYPE_MS = 100
+    const HOLD_MS = 2000
+    const DELETE_MS = 50
+
+    let index = 0
+    let length = toolList[0].length
+
+    const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+
+    const run = async () => {
+      for (;;) {
+        const tool = toolList[index]
+
+        while (length < tool.length) {
+          word.textContent = tool.slice(0, ++length)
+          await wait(TYPE_MS)
+        }
+
+        await wait(HOLD_MS)
+
+        while (length > 0) {
+          word.textContent = tool.slice(0, --length)
+          await wait(DELETE_MS)
+        }
+
+        index = (index + 1) % toolList.length
+      }
+    }
+
+    run()
+  }
+</script>
+
+<style>
+  .cycle {
+    font-weight: 600;
+    font-style: normal;
+    color: var(--colour-accent);
+  }
+
+  .caret {
+    display: inline-block;
+    padding-inline-start: 0.25rem;
+    animation: caret-blink 1s ease-in-out infinite;
+  }
+
+  @keyframes caret-blink {
+    50% {
+      opacity: 0.4;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .caret {
+      display: none;
+    }
+  }
+</style>

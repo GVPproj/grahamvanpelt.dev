@@ -1,0 +1,85 @@
+---
+interface Props {
+  src: string
+  alt: string
+}
+
+const { src, alt } = Astro.props
+---
+
+<div>
+  <div class="screen">
+    <div class="viewport">
+      <img src={src} alt={alt} width="512" height="278" />
+    </div>
+  </div>
+  <div class="base"><div class="notch"></div></div>
+</div>
+
+<style>
+  /* The bezel greys move onto the raw palette tier rather than staying on
+     Tailwind's zinc — that is what --rp-overlay/--rp-surface are there for. */
+  .screen {
+    position: relative;
+    max-width: 301px;
+    height: 172px;
+    margin-inline: auto;
+    border: 8px solid var(--rp-overlay);
+    border-radius: 0.75rem 0.75rem 0 0;
+    background-color: var(--rp-overlay);
+  }
+
+  .viewport {
+    height: 154px;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+
+  .viewport img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.75rem;
+    object-fit: cover;
+  }
+
+  .base {
+    position: relative;
+    max-width: 351px;
+    height: 17px;
+    margin-inline: auto;
+    border-radius: 0.125rem 0.125rem 0.75rem 0.75rem;
+    background-color: var(--rp-surface);
+  }
+
+  .notch {
+    position: absolute;
+    inset-block-start: 0;
+    inset-inline-start: 50%;
+    width: 56px;
+    height: 5px;
+    transform: translateX(-50%);
+    border-radius: 0 0 0.75rem 0.75rem;
+    background-color: var(--rp-overlay);
+  }
+
+  @media (width >= 48rem) {
+    .screen {
+      max-width: 512px;
+      height: 294px;
+    }
+
+    .viewport {
+      height: 278px;
+    }
+
+    .base {
+      max-width: 597px;
+      height: 21px;
+    }
+
+    .notch {
+      width: 96px;
+      height: 8px;
+    }
+  }
+</style>
