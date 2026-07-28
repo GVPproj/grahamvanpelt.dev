@@ -93,7 +93,7 @@ Our `dev` script with run `docker:start` if the container isn't built yet, or fa
 
 All the `-v` flags in `docker:run` are creating volumes for the directories in our PocketBase project.
 
-```JSON
+```json
 {
   "name": "pb-starter",
   "private": true,
@@ -158,7 +158,7 @@ fly volumes create pb_data --size=1
 
 This creates a 1gb `pb_data` volume for our data. Adjust the `http_sevice.concurrency` and `[mounts]` portions of out `fly.toml` file.
 
-```TOML
+```toml
 # fly.toml app configuration file generated for YOUR_APP on 2024-10-24T13:31:47-07:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
@@ -218,7 +218,7 @@ Let's add a github action to deploy when we push changes to the repo. We need to
 fly tokens deploy
 ```
 
-```YAML
+```yaml
 name: Deploy PocketBase to Fly
 on:
   push:
