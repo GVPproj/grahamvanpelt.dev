@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://grahamvanpelt.dev/sitemap-index.xml
