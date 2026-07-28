@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+
+const posts = (await getCollection('blog')).sort(
+  (a, b) => b.data.created.getTime() - a.data.created.getTime(),
+)
+
+const formatDate = (date: Date) =>
+  date.toLocaleDateString('en-CA', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+  })
+---
+
+<Layout>
+  <h1 class="visually-hidden">Blog</h1>
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <a href={`/blog/${post.id}`}>
+            <h2>{post.data.title}</h2>
+            <time datetime={post.data.created.toISOString()}>
+              {formatDate(post.data.created)}
+            </time>
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+  <p><a href="/rss.xml">RSS feed</a></p>
+</Layout>
+
+<style>
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding-inline: 1.5rem;
+  }
+
+  /* Post links read as text, not as links, and pick up the accent on hover —
+     scoped to li so the RSS link below keeps the normal link treatment. */
+  li a {
+    color: var(--colour-text-base);
+  }
+
+  li a:hover {
+    color: var(--colour-accent);
+  }
+
+  h2 {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+    font-weight: 700;
+  }
+
+  time {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+  }
+
+  p {
+    margin-block-start: 3rem;
+    padding-inline: 1.5rem;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+</style>
