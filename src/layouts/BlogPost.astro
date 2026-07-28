@@ -3,10 +3,12 @@ import Layout from './Layout.astro'
 
 interface Props {
   title: string
+  description: string
   created: Date
+  slug: string
 }
 
-const { title, created } = Astro.props
+const { title, description, created, slug } = Astro.props
 
 const formattedDate = created.toLocaleDateString('en-CA', {
   month: 'long',
@@ -15,7 +17,12 @@ const formattedDate = created.toLocaleDateString('en-CA', {
 })
 ---
 
-<Layout>
+<Layout
+  title={`${title} - Graham Van Pelt`}
+  description={description}
+  image={`/og/${slug}.png`}
+  publishedTime={created}
+>
   <article>
     <header>
       <h1>{title}</h1>

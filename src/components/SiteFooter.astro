@@ -1,0 +1,24 @@
+---
+const year = new Date().getFullYear()
+---
+
+<footer>
+  <p>&copy; {year} grahamvanpelt.dev</p>
+</footer>
+
+<style>
+  footer {
+    display: flex;
+    width: 100%;
+    max-width: 1024px;
+    margin-block-start: auto;
+    padding-inline: 1.5rem;
+    padding-block: 8rem 1.5rem;
+  }
+
+  p {
+    font-size: 0.75rem;
+    line-height: 1rem;
+    color: var(--colour-text-muted);
+  }
+</style>

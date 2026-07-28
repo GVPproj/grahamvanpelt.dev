@@ -1,32 +1,34 @@
 ---
 import '../styles/global.css'
-// Imported for their emitted URLs so the preloads point at the same hashed
-// assets the @font-face rules resolve to.
-import sfiziaRegular from '../styles/fonts/sfizia/sfizia-regular-webfont.woff2?url'
-import wotfardRegular from '../styles/fonts/wotfard/wotfard-regular-webfont.woff2?url'
+import BaseHead from '../components/BaseHead.astro'
+import SiteHeader from '../components/SiteHeader.astro'
+import SiteFooter from '../components/SiteFooter.astro'
+
+interface Props {
+  title: string
+  description: string
+  image?: string
+  publishedTime?: Date
+  noindex?: boolean
+}
 ---
 
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="preload"
-      href={sfiziaRegular}
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <link
-      rel="preload"
-      href={wotfardRegular}
-      as="font"
-      type="font/woff2"
-      crossorigin
-    />
-    <slot name="head" />
+    <BaseHead {...Astro.props} />
   </head>
   <body>
+    <div class="header-width">
+      <SiteHeader />
+    </div>
     <main class="wrapper"><slot /></main>
+    <SiteFooter />
   </body>
 </html>
+
+<style>
+  .header-width {
+    width: 100%;
+    max-width: 1024px;
+  }
+</style>
