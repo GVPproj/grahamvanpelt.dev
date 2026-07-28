@@ -1,23 +1,15 @@
 ---
 import Layout from '../layouts/Layout.astro'
-import { getCollection } from 'astro:content'
+import {
+  BLOG_DESCRIPTION,
+  formatPostDate,
+  getSortedPosts,
+} from '../data/blog'
 
-const posts = (await getCollection('blog')).sort(
-  (a, b) => b.data.created.getTime() - a.data.created.getTime(),
-)
-
-const formatDate = (date: Date) =>
-  date.toLocaleDateString('en-CA', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  })
+const posts = await getSortedPosts()
 ---
 
-<Layout
-  title="Blog - Graham Van Pelt"
-  description="Notes on the things I build — Go, PocketBase, Remix and Next, Astro — written up while they are still fresh."
->
+<Layout title="Blog - Graham Van Pelt" description={BLOG_DESCRIPTION}>
   <h1 class="visually-hidden">Blog</h1>
   <ul>
     {
@@ -26,7 +18,7 @@ const formatDate = (date: Date) =>
           <a href={`/blog/${post.id}`}>
             <h2>{post.data.title}</h2>
             <time datetime={post.data.created.toISOString()}>
-              {formatDate(post.data.created)}
+              {formatPostDate(post.data.created)}
             </time>
           </a>
         </li>

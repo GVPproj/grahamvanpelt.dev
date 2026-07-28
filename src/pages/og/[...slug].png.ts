@@ -3,6 +3,7 @@ import satori from 'satori'
 import { Resvg } from '@resvg/resvg-js'
 import { getCollection, type CollectionEntry } from 'astro:content'
 import type { APIContext } from 'astro'
+import { formatPostDate } from '../../data/blog'
 
 // Read once at module scope — satori's README flags per-render reads as a
 // 2× difference. These are the kit TTFs; satori cannot read the .woff2s the
@@ -35,11 +36,7 @@ interface Props {
 export async function GET({ props }: APIContext<Props>) {
   const { post } = props
 
-  const date = post.data.created.toLocaleDateString('en-CA', {
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
-  })
+  const date = formatPostDate(post.data.created)
 
   // Satori's object-literal form — satori/jsx is still labelled experimental.
   const svg = await satori(
@@ -122,7 +119,9 @@ export async function GET({ props }: APIContext<Props>) {
     },
   )
 
-  const png = new Resvg(svg).render().asPng()
+  // Copy the Buffer into a plain Uint8Array: under @types/node 22 a Buffer is
+  // typed over ArrayBufferLike, which Response's BodyInit rejects.
+  const png = new Uint8Array(new Resvg(svg).render().asPng())
 
   return new Response(png, {
     headers: { 'Content-Type': 'image/png' },

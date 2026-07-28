@@ -215,29 +215,6 @@ const contact = [
     font-family: var(--font-sans);
   }
 
-  @container (width >= 56rem) {
-    .cv {
-      flex-direction: row;
-    }
-
-    aside {
-      /* 0 0 so the sidebar holds its width instead of being squeezed by the
-         long-content column, which has far more min-content than it does. */
-      flex: 0 0 25%;
-      margin-inline: 0;
-    }
-
-    .roles {
-      flex: 1;
-      min-width: 0;
-      margin-block-start: 0;
-    }
-
-    aside img {
-      margin-inline: 0;
-    }
-  }
-
   aside {
     display: flex;
     flex-direction: column;
@@ -275,6 +252,31 @@ const contact = [
     flex-direction: column;
     gap: 2rem;
     margin-block-start: 2rem;
+  }
+
+  /* After the base aside/.roles rules: the overrides tie on specificity, so
+     source order is what makes them win at wide widths. */
+  @container (width >= 56rem) {
+    .cv {
+      flex-direction: row;
+    }
+
+    aside {
+      /* 0 0 so the sidebar holds its width instead of being squeezed by the
+         long-content column, which has far more min-content than it does. */
+      flex: 0 0 25%;
+      margin-inline: 0;
+    }
+
+    .roles {
+      flex: 1;
+      min-width: 0;
+      margin-block-start: 0;
+    }
+
+    aside img {
+      margin-inline: 0;
+    }
   }
 
   h2 {

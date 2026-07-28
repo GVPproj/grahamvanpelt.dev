@@ -8,10 +8,9 @@ See what I'm up to these days...
 
 ## Tech Stack
 
-- **Framework**: Next.js 15 with React 19
-- **Styling**: TailwindCSS
-- **Animation**: Framer Motion
-- **Database**: PocketBase
+- **Framework**: Astro 7 
+- **Styling**: CSS
+- **Content**: Markdown
 - **Deployment**: Netlify
 
 ## Quick Start
