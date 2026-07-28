@@ -1,6 +1,6 @@
 ---
 title: Typography and Code Test Post
-slug: typography-and-code-test-post
+description: "A typography and code fixture used while porting the blog to plain CSS. Deleted before launch."
 created: 2026-07-28T12:00:00Z
 ---
 

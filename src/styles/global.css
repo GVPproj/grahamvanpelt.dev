@@ -1,0 +1,195 @@
+@import './fonts.css';
+
+/* ---------------------------------------------------------------- tokens -- */
+
+/* Twelve canonical Rosé Pine Moon roles, verbatim from rose-pine/palette.
+   This tier is upstream data, not invented values — it stays diffable against
+   the official palette and keeps overlay/gold/foam available without pasting
+   stray hexes. */
+:root {
+  --rp-base: #232136;
+  --rp-surface: #2a273f;
+  --rp-overlay: #393552;
+  --rp-muted: #6e6a86;
+  --rp-subtle: #908caa;
+  --rp-text: #e0def4;
+  --rp-love: #eb6f92;
+  --rp-gold: #f6c177;
+  --rp-rose: #ea9a97;
+  --rp-pine: #3e8fb0;
+  --rp-foam: #9ccfd8;
+  --rp-iris: #c4a7e7;
+}
+
+/* These six --colour-* names are the only ones that exist. Nothing outside
+   this block may invent another.
+
+   Do NOT use --rp-muted (#6e6a86) for text: 3.03:1 against the fill, fails
+   AA. It is a border/decoration colour only. */
+:root {
+  --colour-fill: var(--rp-base);
+  --colour-fill-muted: var(--rp-surface);
+  --colour-text-base: var(--rp-text);
+  --colour-text-muted: var(--rp-subtle);
+  --colour-accent: var(--rp-iris);
+  --colour-highlight: var(--rp-rose);
+}
+
+:root {
+  --font-serif: 'Sfizia', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Wotfard', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ----------------------------------------------------------------- reset -- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* ------------------------------------------------------- element defaults -- */
+
+html {
+  background-color: var(--colour-fill);
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--rp-subtle) 15%, transparent) 0.25px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+  background-attachment: fixed;
+  color: var(--colour-text-base);
+  font-family: var(--font-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  margin-inline: auto;
+  overflow-y: scroll;
+}
+
+main {
+  width: 100%;
+  margin-inline: auto;
+  margin-block-start: 3rem;
+  padding-block: 1.5rem;
+}
+
+@media (width >= 48rem) {
+  main {
+    margin-block-start: 0;
+  }
+}
+
+p {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+a {
+  color: var(--colour-accent);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+a:hover {
+  color: var(--colour-highlight);
+}
+
+/* ------------------------------------------------------------ primitives -- */
+
+/* Three-column grid whose middle track is the page measure, so a child can
+   opt out to full width with .full-bleed instead of unwinding padding. */
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr min(1024px, 100%) 1fr;
+}
+
+.wrapper > * {
+  grid-column: 2;
+}
+
+.full-bleed {
+  width: 100%;
+  grid-column: 1 / 4;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* ------------------------------------------------ reduced-motion backstop -- */
+
+/* Each animation also handles this itself; this is the net underneath. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

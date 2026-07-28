@@ -1,6 +1,6 @@
 ---
 title: "Greetings in the Terminal with Go"
-slug: first-go-app
+description: "A first small Go program that greets me with the date whenever I open a terminal, and the two things it taught me on the way: Printf's format verbs, and Go's reference-date approach to formatting time."
 created: 2025-08-20T22:12:24.871Z
 ---
 

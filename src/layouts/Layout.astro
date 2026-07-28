@@ -1,0 +1,32 @@
+---
+import '../styles/global.css'
+// Imported for their emitted URLs so the preloads point at the same hashed
+// assets the @font-face rules resolve to.
+import sfiziaRegular from '../styles/fonts/sfizia/sfizia-regular-webfont.woff2?url'
+import wotfardRegular from '../styles/fonts/wotfard/wotfard-regular-webfont.woff2?url'
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="preload"
+      href={sfiziaRegular}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href={wotfardRegular}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <slot name="head" />
+  </head>
+  <body>
+    <main class="wrapper"><slot /></main>
+  </body>
+</html>
