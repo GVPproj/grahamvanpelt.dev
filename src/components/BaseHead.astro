@@ -1,0 +1,80 @@
+---
+import sfiziaRegular from '../styles/fonts/sfizia/sfizia-regular-webfont.woff2?url'
+import wotfardRegular from '../styles/fonts/wotfard/wotfard-regular-webfont.woff2?url'
+
+interface Props {
+  title: string
+  description: string
+  /** Site-relative path to the OG card. Posts pass their generated one. */
+  image?: string
+  /** Set on blog posts, to emit og:type article and article:published_time. */
+  publishedTime?: Date
+  noindex?: boolean
+}
+
+const {
+  title,
+  description,
+  image = '/og-default.png',
+  publishedTime,
+  noindex = false,
+} = Astro.props
+
+const canonical = new URL(Astro.url.pathname, Astro.site)
+const imageUrl = new URL(image, Astro.site)
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="icon" href="/favicon.ico" sizes="any" />
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+{noindex && <meta name="robots" content="noindex" />}
+
+<!-- The preloads import the font assets so they resolve to the same hashed
+     URLs the @font-face rules use. -->
+<link
+  rel="preload"
+  href={sfiziaRegular}
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href={wotfardRegular}
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:url" content={canonical} />
+<meta property="og:type" content={publishedTime ? 'article' : 'website'} />
+<meta property="og:site_name" content="Graham Van Pelt" />
+{
+  publishedTime && (
+    <meta
+      property="article:published_time"
+      content={publishedTime.toISOString()}
+    />
+  )
+}
+
+<!-- No twitter:site — there is no handle to point at. -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={imageUrl} />
+
+<!-- Autodiscovery matters as much as the feed itself. -->
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title="Graham Van Pelt"
+  href="/rss.xml"
+/>

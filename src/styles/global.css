@@ -1,0 +1,380 @@
+@import './fonts.css';
+
+/* ---------------------------------------------------------------- tokens -- */
+
+/* Twelve canonical Rosé Pine Moon roles, verbatim from rose-pine/palette.
+   This tier is upstream data, not invented values — it stays diffable against
+   the official palette and keeps overlay/gold/foam available without pasting
+   stray hexes. */
+:root {
+  --rp-base: #232136;
+  --rp-surface: #2a273f;
+  --rp-overlay: #393552;
+  --rp-muted: #6e6a86;
+  --rp-subtle: #908caa;
+  --rp-text: #e0def4;
+  --rp-love: #eb6f92;
+  --rp-gold: #f6c177;
+  --rp-rose: #ea9a97;
+  --rp-pine: #3e8fb0;
+  --rp-foam: #9ccfd8;
+  --rp-iris: #c4a7e7;
+}
+
+/* These six --colour-* names are the only ones that exist. Nothing outside
+   this block may invent another.
+
+   Do NOT use --rp-muted (#6e6a86) for text: 3.03:1 against the fill, fails
+   AA. It is a border/decoration colour only. */
+:root {
+  --colour-fill: var(--rp-base);
+  --colour-fill-muted: var(--rp-surface);
+  --colour-text-base: var(--rp-text);
+  --colour-text-muted: var(--rp-subtle);
+  --colour-accent: var(--rp-iris);
+  --colour-highlight: var(--rp-rose);
+}
+
+/* Both stacks keep Tailwind's default sans fallbacks, emoji faces included —
+   without them the 👋 on the home page renders as tofu. */
+:root {
+  --font-fallback: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-serif: 'Sfizia', var(--font-fallback);
+  --font-sans: 'Wotfard', var(--font-fallback);
+}
+
+/* ----------------------------------------------------------------- reset -- */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img,
+svg,
+video,
+canvas {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+/* ------------------------------------------------------- element defaults -- */
+
+html {
+  background-color: var(--colour-fill);
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--rp-subtle) 15%, transparent) 0.25px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+  background-attachment: fixed;
+  color: var(--colour-text-base);
+  font-family: var(--font-serif);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  align-items: center;
+  margin-inline: auto;
+  overflow-y: scroll;
+}
+
+main {
+  width: 100%;
+  margin-inline: auto;
+  margin-block-start: 3rem;
+  padding-block: 1.5rem;
+}
+
+@media (width >= 48rem) {
+  main {
+    margin-block-start: 0;
+  }
+}
+
+p {
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+a {
+  color: var(--colour-accent);
+  text-decoration: none;
+  transition: color 150ms ease;
+}
+
+a:hover {
+  color: var(--colour-highlight);
+}
+
+/* ------------------------------------------------------------ primitives -- */
+
+/* Three-column grid whose middle track is the page measure, so a child can
+   opt out to full width with .full-bleed instead of unwinding padding. */
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr min(1024px, 100%) 1fr;
+}
+
+.wrapper > * {
+  grid-column: 2;
+}
+
+.full-bleed {
+  width: 100%;
+  grid-column: 1 / 4;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* ----------------------------------------------------------------- prose -- */
+
+/* Hand-written and global, not scoped: Astro's scoped styles never reach
+   markdown HTML rendered by <Content />, because those elements get no scope
+   attribute.
+
+   This applies to the blog post body ALONE. The old `article, aside { @apply
+   prose }` gave every <article> prose, CV pages included; the CV now carries
+   its own explicit rules instead of inheriting by accident. That also retires
+   a latent bug — `dark:prose-invert` was gated on prefers-color-scheme, so on
+   a light-preference OS the blog body rendered dark grey on the dark fill. */
+.prose {
+  width: 100%;
+  max-width: 65ch;
+  margin-inline: auto;
+  color: var(--colour-text-base);
+}
+
+.prose p {
+  margin-block: 1.25rem;
+}
+
+.prose h2,
+.prose h3,
+.prose h4 {
+  color: var(--colour-text-base);
+}
+
+.prose h2 {
+  margin-block: 2rem 1rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  font-weight: 700;
+}
+
+.prose h3 {
+  margin-block: 1.75rem 0.75rem;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+.prose h4 {
+  margin-block: 1.5rem 0.5rem;
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+}
+
+.prose ul,
+.prose ol {
+  margin-block: 1.25rem;
+  padding-inline-start: 1.625rem;
+  font-family: var(--font-sans);
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+
+.prose ul {
+  list-style: disc;
+}
+
+.prose ol {
+  list-style: decimal;
+}
+
+.prose li {
+  margin-block: 0.5rem;
+}
+
+/* Nested lists ride on the parent's margins, not their own. */
+.prose li > ul,
+.prose li > ol {
+  margin-block: 0.5rem;
+}
+
+.prose blockquote {
+  margin-block: 1.5rem;
+  padding-inline-start: 1rem;
+  border-inline-start: 0.25rem solid var(--rp-muted);
+  font-style: italic;
+  color: var(--colour-text-muted);
+}
+
+.prose strong {
+  font-weight: 700;
+  color: var(--colour-text-base);
+}
+
+.prose hr {
+  margin-block: 3rem;
+  border: 0;
+  border-block-start: 1px solid var(--rp-muted);
+}
+
+.prose img {
+  margin-block: 2rem;
+  border-radius: 0.375rem;
+}
+
+.prose table {
+  display: block;
+  margin-block: 2rem;
+  border-collapse: collapse;
+  overflow-x: auto;
+  font-family: var(--font-sans);
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.prose th,
+.prose td {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--rp-muted);
+  text-align: start;
+}
+
+.prose th {
+  font-weight: 600;
+}
+
+/* Inline code only — the descendant `pre code` rule below undoes this for
+   fenced blocks. */
+.prose code {
+  padding: 0.125rem 0.25rem;
+  border-radius: 0.25rem;
+  background-color: var(--colour-fill-muted);
+  color: var(--colour-text-base);
+  font-size: 0.875em;
+}
+
+/* Descendant, not child: §9 wraps every <pre> in a .code-block div at runtime,
+   so the shape is .prose > .code-block > pre. A direct-child selector breaks. */
+.prose pre {
+  margin-block: 1.5rem;
+  padding: 0.875rem 1.125rem;
+  border-radius: 0.375rem;
+  overflow-x: auto;
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  /* Shiki writes the theme background inline, and rose-pine-moon's editor
+     background is #232136 — the same value as --colour-fill, so a code block
+     would be invisible against the page. !important is the only lever against
+     an inline style; it is doing exactly one job here. */
+  background-color: var(--colour-fill-muted) !important;
+}
+
+.prose pre code {
+  padding: 0;
+  border-radius: 0;
+  background-color: transparent;
+  font-size: inherit;
+}
+
+/* Both classes name global primitives: the markup is generated at runtime, so
+   there is no scoped <style> to hang them on. */
+.code-block {
+  position: relative;
+}
+
+.copy-code {
+  position: absolute;
+  inset-block-start: 0.5rem;
+  inset-inline-end: 0.5rem;
+  padding: 0.25rem 0.5rem;
+  border: 0;
+  border-radius: 0.25rem;
+  background: var(--colour-fill-muted);
+  color: var(--colour-text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+/* Always visible — an opacity-on-hover reveal hides the affordance on touch,
+   which is exactly where clipboard access is most tedious. */
+.copy-code:hover,
+.copy-code[data-copied] {
+  color: var(--colour-text-base);
+}
+
+/* ------------------------------------------------ reduced-motion backstop -- */
+
+/* Each animation also handles this itself; this is the net underneath. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

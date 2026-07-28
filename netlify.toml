@@ -1,8 +1,18 @@
 [build]
-command = "pnpm run build"
-publish = ".next"
+  command = "pnpm build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+# The only redirect: /cv/education is retired but linked from already-sent
+# job applications. 301 so search engines consolidate. No `force` — nothing
+# is built at the old path.
+[[redirects]]
+  from = "/cv/education"
+  to = "/cv"
+  status = 301
 
 [dev]
-command = "pnpm run dev"
-framework = "next"
-
+  command = "pnpm dev"
+  framework = "astro"

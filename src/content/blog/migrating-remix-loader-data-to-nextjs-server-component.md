@@ -1,6 +1,6 @@
 ---
 title: "Migrating Remix loader data to a NextJs server component"
-slug: migrating-remix-loader-data-to-nextjs-server-component
+description: "The same PocketBase fetch written twice — once as a Remix v2 loader with useLoaderData, once as a Next 15 async server component — and what changes when data fetching moves into the component itself."
 created: 2024-12-03T22:00:47.134Z
 ---
 

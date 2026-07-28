@@ -1,0 +1,376 @@
+---
+import Layout from '../layouts/Layout.astro'
+import PortfolioItem from '../components/PortfolioItem.astro'
+import TipboxLogo from '../components/icons/TipboxLogo.astro'
+import { portfolioItems } from '../data/portfolioData'
+
+const personal = portfolioItems.filter((item) => item.category === 'personal')
+
+const team = [
+  {
+    name: 'Graham Van Pelt',
+    role: 'Full-Stack Engineer',
+  },
+  {
+    name: 'Howard Baral',
+    role: 'Founder & Chief Executive Officer',
+    href: 'https://www.linkedin.com/in/howie-baral-9550aa4/',
+  },
+  {
+    name: 'Michael Schlein',
+    role: 'Chief Product Officer',
+    href: 'https://www.linkedin.com/in/michaelschlein/',
+  },
+  {
+    name: 'Milton Gonzalez',
+    role: 'Chief Technical Officer',
+    href: 'https://www.linkedin.com/in/giovangonzalez/',
+  },
+  {
+    name: 'Ben Frey',
+    role: 'Creative Director & Senior Product Designer',
+    href: 'https://www.linkedin.com/in/ben-frey-88186a65/',
+  },
+  {
+    name: 'Jeffery Stefani',
+    role: 'Creative Director',
+    href: 'https://www.linkedin.com/in/jeffrey-stefani-85563a221/',
+  },
+  {
+    name: 'Jonny Nguyen',
+    role: 'Full-stack, DevOps Engineer',
+    href: 'https://www.linkedin.com/in/jonny-nguyen/',
+  },
+  {
+    name: 'Dion Kodhyat',
+    role: 'Front-End Developer',
+    href: 'https://www.linkedin.com/in/dionkodhyat/',
+  },
+]
+---
+
+<Layout
+  title="Graham Van Pelt - Portfolio"
+  description="Client websites and personal projects, plus the work behind Tipbox.io — a collaboration and workflow platform for film and TV production teams."
+>
+  <h1 class="visually-hidden">Portfolio</h1>
+
+  <article class="tipbox">
+    <div class="lede">
+      <div>
+        <a href="https://www.tipbox.io" aria-label="Go to Tipbox.io">
+          <TipboxLogo class="tipbox-logo" />
+        </a>
+        <p>
+          Your production team&apos;s best friend – take all the headaches out
+          of file sharing, task tracking, workflows and project management.
+        </p>
+      </div>
+      <img
+        src="/images/tipbox/Laptop.png"
+        alt="Tipbox.io laptop and mobile mockup"
+        width="500"
+        height="300"
+        class="lede-shot"
+      />
+    </div>
+
+    <div class="role">
+      <section>
+        <h2>My Role</h2>
+        <p>
+          As a Full-Stack Engineer and Product Experience Lead at Tipbox, I
+          architected and delivered end-to-end solutions for a collaborative
+          document and tasks platform. My hundreds of commits span the frontend
+          and backend, encompassing an entire task management ecosystem—from
+          GraphQL schema design to React component implementation. I&apos;ve
+          owned database optimization, API development, UI state management, and
+          UX design, leading architectural decisions and enhancing
+          authentication flows. Bridging product vision with technical
+          execution, I deliver complex features, integrating AWS, PostgreSQL,
+          and React/TypeScript for robust performance and exceptional user
+          experience.
+        </p>
+      </section>
+      <img
+        src="/images/tipbox/No Looking Back.png"
+        alt="No looking back"
+        width="600"
+        height="438"
+        class="role-shot"
+      />
+    </div>
+
+    <h2 class="team-heading">Team</h2>
+    <div class="team">
+      <img
+        src="/images/tipbox/_Laptop-slideshow-2.gif"
+        alt="A slideshow of Tipbox.io running on a laptop"
+        width="400"
+        height="238"
+        class="team-shot"
+      />
+      <section>
+        <ul>
+          {
+            team.map(({ name, role, href }) => (
+              <li>
+                {href ? (
+                  <a href={href}>{name}</a>
+                ) : (
+                  <strong>{name}</strong>
+                )}
+                , {role}
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </div>
+  </article>
+
+  <img
+    src="/images/tipbox/Ben Frey sample - Tipbox.jpg"
+    alt="A Tipbox.io project board with attached media"
+    width="1200"
+    height="600"
+    class="full-bleed banner"
+  />
+
+  <hr />
+
+  <h2 class="client-heading">Client websites and personal projects</h2>
+
+  {
+    personal.map((item, index) => (
+      <>
+        <PortfolioItem
+          title={item.title}
+          description={item.description}
+          screenshot={item.screenshot}
+          tooling={item.tooling}
+          url={item.url}
+          repo={item.repo}
+        />
+        {index < personal.length - 1 && <hr />}
+      </>
+    ))
+  }
+</Layout>
+
+<style>
+  .lede {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding-inline: 1.5rem;
+  }
+
+  .lede > div {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  @media (width >= 48rem) {
+    .lede {
+      flex-direction: row;
+      gap: 0;
+    }
+  }
+
+  .tipbox-logo {
+    width: auto;
+    height: 3rem;
+  }
+
+  .lede a {
+    display: inline-block;
+    color: var(--colour-text-base);
+  }
+
+  .lede a:hover {
+    color: var(--colour-highlight);
+  }
+
+  .lede p {
+    max-width: 40ch;
+  }
+
+  .lede-shot {
+    width: 100%;
+  }
+
+  @media (width >= 48rem) {
+    .lede-shot {
+      width: 500px;
+    }
+  }
+
+  .role {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-block: 3rem;
+  }
+
+  @media (width >= 64rem) {
+    .role {
+      flex-direction: row;
+    }
+  }
+
+  .role section {
+    display: flex;
+    /* flex-basis 0 + min-width 0 so the prose column shares the row instead of
+       being squeezed to its min-content width by the image beside it. */
+    flex: 1 1 0;
+    min-width: 0;
+    flex-direction: column;
+    gap: 1rem;
+    padding-inline: 1.5rem;
+  }
+
+  .role-shot {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin-block: auto;
+    margin-inline: auto;
+    padding-inline: 1.5rem;
+    object-fit: contain;
+  }
+
+  @media (width >= 48rem) {
+    .role-shot {
+      padding: 0;
+    }
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: var(--colour-text-base);
+  }
+
+  .team-heading {
+    padding-inline-start: 1.5rem;
+    font-weight: 600;
+  }
+
+  .team {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-block-end: 3rem;
+    padding-inline-end: 1.5rem;
+  }
+
+  @media (width >= 64rem) {
+    .team {
+      flex-direction: row;
+      padding-inline: 1.5rem 0;
+    }
+  }
+
+  .team-shot {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    align-self: center;
+    margin-block-start: 2rem;
+    margin-inline-start: 1.5rem;
+    border-radius: 0.5rem;
+    object-fit: contain;
+  }
+
+  @media (width >= 64rem) {
+    .team-shot {
+      margin-block-end: 0;
+      margin-inline-start: 0;
+    }
+  }
+
+  .team section {
+    display: flex;
+    flex: 1 1 0;
+    min-width: 0;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  @media (width >= 64rem) {
+    .team section {
+      padding-inline: 1.5rem;
+    }
+  }
+
+  .team ul {
+    width: 100%;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+
+  @media (width >= 48rem) {
+    .team ul {
+      min-width: max-content;
+    }
+  }
+
+  @media (width >= 64rem) {
+    .team ul {
+      text-align: end;
+    }
+  }
+
+  .team li:first-child {
+    padding-block-end: 0.5rem;
+    border-block-end: 1px solid var(--colour-fill-muted);
+  }
+
+  .team strong,
+  .team a {
+    font-weight: 600;
+  }
+
+  .banner {
+    margin-block: 4rem;
+  }
+
+  hr {
+    width: 12rem;
+    height: 0.25rem;
+    margin-inline: auto;
+    margin-block: 1rem;
+    border: 0;
+    border-radius: 0.25rem;
+    background-color: var(--colour-fill-muted);
+  }
+
+  @media (width >= 48rem) {
+    hr {
+      margin-block: 2.5rem;
+    }
+  }
+
+  .client-heading {
+    margin-block-start: 3rem;
+    padding-inline-start: 1.5rem;
+    font-weight: 700;
+  }
+
+  @media (width >= 48rem) {
+    .client-heading {
+      font-size: 2.25rem;
+      line-height: 2.5rem;
+    }
+  }
+</style>

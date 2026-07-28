@@ -10,15 +10,9 @@
 !.yarn/releases
 !.yarn/versions
 
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
-/build
+# astro
+/dist/
+/.astro/
 
 # misc
 .DS_Store
@@ -28,13 +22,13 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
 .env*
 
-# vercel
-.vercel
+# netlify
+.netlify
 
 # typescript
 *.tsbuildinfo
-next-env.d.ts

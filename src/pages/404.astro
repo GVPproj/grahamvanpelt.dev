@@ -1,0 +1,45 @@
+---
+import Layout from '../layouts/Layout.astro'
+---
+
+<Layout
+  title="Not Found - Graham Van Pelt"
+  description="This page does not exist."
+  noindex
+>
+  <section>
+    <h1>Page not found</h1>
+    <p>
+      There&apos;s nothing at this address. Try the <a href="/" class="serif"
+        >home page</a
+      > or the <a href="/blog" class="serif">blog</a>.
+    </p>
+  </section>
+</Layout>
+
+<style>
+  section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding-inline: 1.5rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+
+  .serif {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 700;
+    text-decoration: underline;
+  }
+</style>

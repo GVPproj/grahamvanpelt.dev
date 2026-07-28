@@ -1,6 +1,6 @@
 ---
 title: "Deploying a containerized PocketBase instance to Fly.io"
-slug: deploy-pocketbase-to-fly
+description: "Putting PocketBase in a Docker container and shipping it to Fly.io: the Dockerfile, the package scripts, a persistent volume so the data survives a redeploy, and a GitHub Actions workflow to deploy on push."
 created: 2024-11-02T13:14:40.868Z
 ---
 

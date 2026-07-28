@@ -1,0 +1,75 @@
+/* The eight faces actually used on the site: Sfizia 400 / 400-italic / 700
+   (the serif), Wotfard 300–700 (the sans). Every face gets font-display: swap
+   — without it all eight are FOIT, so text is invisible for up to 3s cold.
+   Sfizia's src lists woff2 before woff so the smaller file wins; the old
+   declaration had the order reversed and the woff2s were never downloaded. */
+
+@font-face {
+  font-family: 'Sfizia';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url('./fonts/sfizia/sfizia-regular-webfont.woff2') format('woff2'),
+    url('./fonts/sfizia/sfizia-regular-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Sfizia';
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src:
+    url('./fonts/sfizia/sfizia-regularitalicno.2-webfont.woff2') format('woff2'),
+    url('./fonts/sfizia/sfizia-regularitalicno.2-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Sfizia';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src:
+    url('./fonts/sfizia/sfizia-bold-webfont.woff2') format('woff2'),
+    url('./fonts/sfizia/sfizia-bold-webfont.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'Wotfard';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/wotfard/wotfard-light-webfont.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Wotfard';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/wotfard/wotfard-regular-webfont.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Wotfard';
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/wotfard/wotfard-medium-webfont.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Wotfard';
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/wotfard/wotfard-semibold-webfont.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Wotfard';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('./fonts/wotfard/wotfard-bold-webfont.woff2') format('woff2');
+}

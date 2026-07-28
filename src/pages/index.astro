@@ -1,0 +1,107 @@
+---
+import Layout from '../layouts/Layout.astro'
+import Face from '../components/Face.astro'
+import SpanCycle from '../components/SpanCycle.astro'
+---
+
+<Layout
+  title="Graham Van Pelt - Software Developer"
+  description="Portfolio including Graham Van Pelt's apps and projects"
+>
+  <div>
+    <section class="hero">
+      <h1>
+        A <em>Software Developer</em>, building for the web with <br />
+        <SpanCycle />
+      </h1>
+      <Face />
+    </section>
+    <section class="intro">
+      <p>
+        👋 Hi, I&apos;m Graham, a web developer based on beautiful <strong
+          >Salt Spring Island</strong
+        > in western Canada. For the past couple of years I&apos;ve worked at <a
+          href="https://www.tipbox.io"
+          class="serif">Tipbox.io</a
+        > as <strong>Full Stack Developer</strong>. We&apos;re building a Task
+        Management and Visual File Sharing platform for production teams.
+        <br />
+        <br />I use <strong>React</strong> with <strong>TypeScript</strong> to build
+        satisfying and accessible web experiences. Visit my <a
+          href="/portfolio"
+          class="serif underlined">portfolio</a
+        > or have a look through my <a href="/cv" class="serif underlined">CV</a
+        >.
+      </p>
+    </section>
+  </div>
+</Layout>
+
+<style>
+  div {
+    padding-inline: 1.5rem;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  @media (width >= 48rem) {
+    .hero {
+      flex-direction: row;
+      justify-content: space-between;
+      margin-block-end: 4rem;
+    }
+  }
+
+  h1 {
+    min-width: 320px;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-weight: 600;
+  }
+
+  @media (width >= 48rem) {
+    h1 {
+      max-width: 20ch;
+      font-size: 3rem;
+      /* Unitless 1, not a rem value: Tailwind switches to a tight ratio at
+         text-5xl and above. */
+      line-height: 1;
+    }
+  }
+
+  h1 em {
+    color: var(--colour-accent);
+  }
+
+  .intro {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .intro p {
+    font-size: 1.25rem;
+    line-height: 1.8;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+
+  /* font-extrabold had no 800 face declared, so it has been synthesising from
+     700 all along. */
+  .serif {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 700;
+  }
+
+  .underlined {
+    text-decoration: underline;
+  }
+</style>

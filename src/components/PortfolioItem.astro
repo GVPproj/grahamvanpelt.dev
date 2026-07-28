@@ -1,0 +1,176 @@
+---
+import Laptop from './Laptop.astro'
+import Astro7 from './icons/Astro.astro'
+import Css from './icons/Css.astro'
+import Gatsby from './icons/Gatsby.astro'
+import Github from './icons/Github.astro'
+import Javascript from './icons/Javascript.astro'
+import ReactIcon from './icons/React.astro'
+import Tailwind from './icons/Tailwind.astro'
+import Typescript from './icons/Typescript.astro'
+
+interface Props {
+  title?: string
+  url?: string
+  screenshot?: string
+  description?: string
+  tooling: string[]
+  repo?: string
+}
+
+const { title, url, screenshot, description, tooling, repo } = Astro.props
+
+// Order is the render order, matching the original chain of conditionals.
+// NOTE: 'HTML' really does map to the Gatsby glyph — that is how the React
+// version rendered it, and this port changes no pixels.
+const TOOL_ICONS = [
+  ['Gatsby', Gatsby],
+  ['Astro', Astro7],
+  ['TypeScript', Typescript],
+  ['React', ReactIcon],
+  ['HTML', Gatsby],
+  ['TailwindCSS', Tailwind],
+  ['Javascript', Javascript],
+  ['CSS', Css],
+] as const
+
+const tools = TOOL_ICONS.filter(([name]) => tooling.includes(name))
+---
+
+<article>
+  <div class="layout">
+    {
+      screenshot && (
+        <div class="shot">
+          {url ? (
+            <a href={url} target="_blank" rel="noreferrer">
+              <Laptop src={screenshot} alt={`Visit this project: ${title}`} />
+            </a>
+          ) : (
+            <Laptop src={screenshot} alt={`Screenshot of project: ${title}`} />
+          )}
+        </div>
+      )
+    }
+    <div class="details">
+      <ul class="tooling">
+        {
+          repo && (
+            <li>
+              <a href={repo} target="_blank" rel="noreferrer">
+                <Github />
+                GitHub Repo
+              </a>
+            </li>
+          )
+        }
+        {
+          tools.map(([name, Icon]) => (
+            <li>
+              <Icon />
+              {name}
+            </li>
+          ))
+        }
+      </ul>
+      <div class="blurb">
+        <a href={url || '#'} target="_blank" rel="noreferrer">{title}</a>
+        <p>{description}</p>
+      </div>
+    </div>
+  </div>
+</article>
+
+<style>
+  /* One of the two genuinely component-local layouts. Both thresholds are
+     tuned against the container's own width, not ported from the viewport
+     breakpoints they replace — a container query threshold is not the
+     viewport threshold it stands in for. */
+  article {
+    container-type: inline-size;
+    margin-block: 6rem;
+    padding-inline: 1.5rem;
+  }
+
+  @media (width >= 48rem) {
+    article {
+      margin-block: 9rem;
+    }
+  }
+
+  .layout {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  @container (width >= 60rem) {
+    .layout {
+      flex-direction: row;
+    }
+  }
+
+  .shot {
+    min-width: max-content;
+  }
+
+  .details {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 3rem;
+  }
+
+  @container (width >= 34rem) {
+    .details {
+      flex-direction: row;
+    }
+  }
+
+  .tooling {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    color: var(--colour-text-muted);
+  }
+
+  @media (width >= 48rem) {
+    .tooling {
+      min-width: max-content;
+    }
+  }
+
+  .tooling li {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .tooling a {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-weight: 600;
+  }
+
+  .blurb a {
+    font-family: var(--font-sans);
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 600;
+  }
+
+  .blurb p {
+    margin-block-start: 1rem;
+    color: var(--colour-text-muted);
+  }
+
+  @media (width >= 48rem) {
+    .blurb {
+      min-width: 300px;
+    }
+  }
+</style>

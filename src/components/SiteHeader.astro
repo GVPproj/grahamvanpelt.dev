@@ -1,0 +1,272 @@
+---
+import Sig from './Sig.astro'
+import Github from './icons/Github.astro'
+
+const path = Astro.url.pathname
+
+const links = [
+  { href: '/cv', label: 'CV', match: (p: string) => p.startsWith('/cv') },
+  {
+    href: '/portfolio',
+    label: 'Portfolio',
+    match: (p: string) => p === '/portfolio',
+  },
+  { href: '/blog', label: 'Blog', match: (p: string) => p.startsWith('/blog') },
+]
+---
+
+<header>
+  <a
+    href="/"
+    aria-label="Go back to the homepage"
+    class:list={['home', { current: path === '/' }]}
+  >
+    <Sig />
+  </a>
+
+  <nav class="desktop">
+    <ul>
+      {
+        links.map((link) => (
+          <li>
+            <a href={link.href} class:list={{ current: link.match(path) }}>
+              {link.label}
+            </a>
+          </li>
+        ))
+      }
+      <li>
+        <a
+          href="https://github.com/GVPproj"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit my GitHub profile"
+        >
+          <Github width="32" height="32" />
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Native popover: light-dismiss, Escape, top layer and the ARIA wiring
+       come free, and the menu works before JS loads — which the Radix
+       dropdown it replaces did not. Accepted tradeoff: no focus trap, which
+       is fine for a full-screen panel of four links. -->
+  <button
+    type="button"
+    popovertarget="site-nav"
+    class="menu-toggle"
+    aria-label="Open menu"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke-width="1.5"
+      stroke="currentColor"
+      width="32"
+      height="32"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+    </svg>
+  </button>
+
+  <nav popover id="site-nav">
+    <button
+      type="button"
+      popovertarget="site-nav"
+      popovertargetaction="hide"
+      class="menu-close"
+      aria-label="Close menu"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        width="32"
+        height="32"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+    <ul>
+      {
+        links.map((link) => (
+          <li>
+            <a href={link.href}>{link.label}</a>
+          </li>
+        ))
+      }
+      <li>
+        <a
+          href="https://github.com/GVPproj"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Visit my GitHub profile"
+        >
+          <Github width="32" height="32" />
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+<style>
+  header {
+    display: flex;
+    min-width: 100%;
+    justify-content: space-between;
+    padding: 1.5rem;
+  }
+
+  @media (width >= 48rem) {
+    header {
+      padding-block: 3rem;
+    }
+  }
+
+  @media (width >= 64rem) {
+    header {
+      margin-block-end: 2rem;
+    }
+  }
+
+  .home {
+    color: var(--colour-text-base);
+  }
+
+  .home:hover {
+    color: var(--colour-highlight);
+  }
+
+  .home.current {
+    color: var(--colour-accent);
+  }
+
+  nav a {
+    color: var(--colour-text-base);
+  }
+
+  nav a:hover {
+    color: var(--colour-highlight);
+  }
+
+  nav a.current {
+    color: var(--colour-accent);
+  }
+
+  .desktop {
+    display: none;
+    align-self: center;
+  }
+
+  .desktop ul {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 500;
+  }
+
+  @media (width >= 48rem) {
+    .desktop {
+      display: block;
+    }
+
+    .menu-toggle {
+      display: none;
+    }
+  }
+
+  @media (width >= 64rem) {
+    .desktop ul {
+      gap: 2rem;
+    }
+  }
+
+  .menu-toggle {
+    padding-inline: 0.375rem;
+    border: 0;
+    border-radius: 0.25rem;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .menu-toggle:focus-visible {
+    background-color: var(--colour-fill-muted);
+    outline: none;
+  }
+
+  [popover] {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    padding: 1.5rem;
+    border: 0;
+    background-color: var(--colour-fill);
+    color: var(--colour-text-base);
+    /* allow-discrete lets `display` and the top layer participate in the
+       transition, so the panel fades out instead of vanishing. */
+    opacity: 0;
+    transition:
+      opacity 0.2s ease-out,
+      overlay 0.2s ease-out allow-discrete,
+      display 0.2s ease-out allow-discrete;
+  }
+
+  [popover]:popover-open {
+    opacity: 1;
+  }
+
+  @starting-style {
+    [popover]:popover-open {
+      opacity: 0;
+    }
+  }
+
+  .menu-close {
+    display: block;
+    margin-inline-start: auto;
+    padding-inline: 0.375rem;
+    border: 0;
+    background: none;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  [popover] ul {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 4rem;
+    padding-block-start: 4rem;
+    font-family: var(--font-sans);
+    font-size: 1.5rem;
+    line-height: 2rem;
+    font-weight: 500;
+  }
+
+  /* :active gives instant press feedback, replacing the old 0.8s
+     flash-return-sleep sequence that ran before every navigation. */
+  [popover] a:active {
+    color: var(--colour-highlight);
+  }
+
+  @media (width >= 48rem) {
+    [popover] {
+      display: none;
+    }
+  }
+</style>
