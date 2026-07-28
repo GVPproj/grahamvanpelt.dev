@@ -20,7 +20,13 @@ const {
   noindex = false,
 } = Astro.props
 
-const canonical = new URL(Astro.url.pathname, Astro.site)
+/* With `build.format: 'file'`, Astro.url.pathname carries the on-disk name
+   (`/blog.html`, `/index.html`) — but the site serves and links the
+   extensionless URLs, so canonicals must claim those. */
+const canonicalPath = Astro.url.pathname
+  .replace(/index\.html$/, '')
+  .replace(/\.html$/, '')
+const canonical = new URL(canonicalPath, Astro.site)
 const imageUrl = new URL(image, Astro.site)
 ---
 
