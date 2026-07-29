@@ -1,3 +1,15 @@
+<!-- Runs before the SVG below is parsed, so a signature that has already been
+     drawn this session renders complete with no flash of re-drawing. The site
+     is MPA (no <ClientRouter />), so every navigation is a fresh document and
+     the CSS animation would otherwise restart each time. -->
+<script is:inline>
+  try {
+    if (sessionStorage.getItem('sig-drawn') === '1') {
+      document.documentElement.classList.add('sig-drawn')
+    }
+  } catch {}
+</script>
+
 <svg
   class="sig"
   viewBox="-20 -20 1200 300"
@@ -14,6 +26,20 @@
     stroke-linecap="round"
   />
 </svg>
+
+<script>
+  const path = document.querySelector('.sig path')
+  const remember = () => {
+    try {
+      sessionStorage.setItem('sig-drawn', '1')
+    } catch {}
+  }
+
+  // Reduced motion and the already-drawn state both suppress the animation,
+  // so animationend never fires — record those immediately instead.
+  if (path && getComputedStyle(path).animationName === 'none') remember()
+  else path?.addEventListener('animationend', remember, { once: true })
+</script>
 
 <style>
   .sig {
@@ -46,5 +72,11 @@
       animation: none;
       stroke-dashoffset: 0;
     }
+  }
+
+  /* Set by the inline script above once the draw has completed this session. */
+  :global(html.sig-drawn) .sig path {
+    animation: none;
+    stroke-dashoffset: 0;
   }
 </style>
