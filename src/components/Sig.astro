@@ -20,6 +20,22 @@
   />
 </svg>
 
+<script>
+  // Browsers without Element.moveBefore() (e.g. mobile Firefox) persist this
+  // node across navigations by remove-and-reinsert, which restarts CSS
+  // animations. Inline styles ride along with the persisted node, so stamping
+  // the finished state here stops the draw from replaying.
+  const path = document.querySelector<SVGPathElement>(".sig path");
+  path?.addEventListener(
+    "animationend",
+    () => {
+      path.style.animation = "none";
+      path.style.strokeDashoffset = "0";
+    },
+    { once: true },
+  );
+</script>
+
 <style>
   .sig {
     width: 12rem;
