@@ -2,8 +2,7 @@
 // React and Tailwind, both of which are leaving — but refreshing it is copy
 // work, out of scope for the migration.
 export const toolList = [
-  'React',
-  'Accessible HTML',
+  'Go',
   'Typescript',
   'Motion.dev',
   'Postgres',
