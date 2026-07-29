@@ -42,7 +42,7 @@ const links = [
           rel="noopener noreferrer"
           aria-label="Visit my GitHub profile"
         >
-          <Github width="32" height="32" />
+          <Github width="36" height="36" />
         </a>
       </li>
     </ul>
@@ -118,6 +118,16 @@ const links = [
     </ul>
   </nav>
 </header>
+
+<script>
+  // View transitions snapshot the top layer separately from the page root, so
+  // a menu left open during navigation would hang over the outgoing frame and
+  // pop out of existence at the swap. Closing it here instead lets the exit
+  // run on the opacity transition the popover CSS already describes.
+  document.addEventListener('astro:before-preparation', () => {
+    document.querySelector<HTMLElement>('#site-nav')?.hidePopover()
+  })
+</script>
 
 <style>
   header {

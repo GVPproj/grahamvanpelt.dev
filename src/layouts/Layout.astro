@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions'
 import '../styles/global.css'
 import BaseHead from '../components/BaseHead.astro'
 import SiteHeader from '../components/SiteHeader.astro'
@@ -16,6 +17,7 @@ interface Props {
 <html lang="en">
   <head>
     <BaseHead {...Astro.props} />
+    <ClientRouter />
   </head>
   <body>
     <div class="header-width">

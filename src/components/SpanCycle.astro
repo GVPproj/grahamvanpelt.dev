@@ -13,42 +13,52 @@ import { toolList } from '../data/toolList'
 <script>
   import { toolList } from '../data/toolList'
 
-  const word = document.querySelector<HTMLElement>('.cycle .word')
+  const TYPE_MS = 100
+  const HOLD_MS = 2000
+  const DELETE_MS = 50
 
-  // This is the only never-ending animation on the site, which is exactly what
-  // the query is for: leave the server-rendered word and never start the loop.
-  if (word && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const TYPE_MS = 100
-    const HOLD_MS = 2000
-    const DELETE_MS = 50
+  const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
 
+  // The loop ends by detachment: a client-side navigation swaps this element
+  // out of the document, so isConnected turning false means its page is gone.
+  const run = async (word: HTMLElement) => {
     let index = 0
     let length = toolList[0].length
 
-    const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
+    while (word.isConnected) {
+      const tool = toolList[index]
 
-    const run = async () => {
-      for (;;) {
-        const tool = toolList[index]
-
-        while (length < tool.length) {
-          word.textContent = tool.slice(0, ++length)
-          await wait(TYPE_MS)
-        }
-
-        await wait(HOLD_MS)
-
-        while (length > 0) {
-          word.textContent = tool.slice(0, --length)
-          await wait(DELETE_MS)
-        }
-
-        index = (index + 1) % toolList.length
+      while (length < tool.length) {
+        word.textContent = tool.slice(0, ++length)
+        await wait(TYPE_MS)
       }
-    }
 
-    run()
+      await wait(HOLD_MS)
+
+      while (length > 0) {
+        word.textContent = tool.slice(0, --length)
+        await wait(DELETE_MS)
+      }
+
+      index = (index + 1) % toolList.length
+    }
   }
+
+  // astro:page-load, not top-level: with <ClientRouter /> this module runs
+  // once per session, but the element is replaced on every visit to the
+  // homepage (initial load included).
+  document.addEventListener('astro:page-load', () => {
+    const word = document.querySelector<HTMLElement>('.cycle .word')
+
+    // The flag lives on the node itself: a swapped-in replacement arrives
+    // unflagged, while a repeat firing against the same DOM is a no-op.
+    if (!word || word.dataset.cycling) return
+    word.dataset.cycling = 'true'
+
+    // The only never-ending animation on the site, which is exactly what the
+    // query is for: leave the server-rendered word and never start the loop.
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) run(word)
+  })
 </script>
 
 <style>

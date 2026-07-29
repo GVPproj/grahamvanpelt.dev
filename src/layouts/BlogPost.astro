@@ -31,11 +31,17 @@ const { title, description, created } = post.data
   // see a dead control, and the navigator.clipboard guard covers insecure
   // contexts (plain-HTTP dev over LAN) the same way.
   //
-  // If <ClientRouter /> is ever added to this site, this loop must move into an
-  // `astro:page-load` listener or the buttons stop appearing after the first
-  // client-side navigation.
-  if (navigator.clipboard) {
+  // astro:page-load, not top-level: with <ClientRouter /> this module runs
+  // once per session, so a bare loop would only decorate the first page. The
+  // event fires on the initial load too, so there is no separate startup path.
+  function addCopyButtons() {
+    if (!navigator.clipboard) return
+
     for (const pre of document.querySelectorAll('pre.astro-code')) {
+      // astro:page-load can re-fire against already-wrapped DOM (back/forward,
+      // same-page navigation); re-wrapping would nest divs and stack buttons.
+      if (pre.parentElement?.classList.contains('code-block')) continue
+
       // .code-block is the positioning context, not decoration: .prose pre has
       // overflow-x: auto, so a button positioned inside the <pre> would scroll
       // out of view on a long line.
@@ -72,6 +78,8 @@ const { title, description, created } = post.data
       })
     }
   }
+
+  document.addEventListener('astro:page-load', addCopyButtons)
 </script>
 
 <style>

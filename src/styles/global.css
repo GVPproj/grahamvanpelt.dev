@@ -378,3 +378,6 @@ a:hover {
     scroll-behavior: auto !important;
   }
 }
+
+/* No ::view-transition rules needed: <ClientRouter /> detects
+   prefers-reduced-motion itself and swaps with no view transition at all. */
