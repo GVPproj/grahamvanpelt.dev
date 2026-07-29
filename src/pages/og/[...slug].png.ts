@@ -15,11 +15,13 @@ const wotfardSemibold = readFileSync(
   'src/assets/og/wotfard-semibold-webfont.ttf',
 )
 
-// Rosé Pine Moon, matching the site tokens in global.css.
-const base = '#232136'
-const text = '#e0def4'
-const subtle = '#908caa'
-const iris = '#c4a7e7'
+// Matching the site tokens in global.css: --colour-fill, --colour-text-base,
+// --colour-text-muted, --colour-accent. Satori has no CSS custom properties,
+// so these are the resolved hexes.
+const base = '#082c45'
+const text = '#f4f4f5'
+const subtle = '#e4e4e7'
+const iris = '#e879f9'
 
 export async function getStaticPaths() {
   const posts = await getCollection('blog')

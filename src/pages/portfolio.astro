@@ -132,8 +132,8 @@ const team = [
   <img
     src="/images/tipbox/Ben Frey sample - Tipbox.jpg"
     alt="A Tipbox.io project board with attached media"
-    width="1200"
-    height="600"
+    width="1920"
+    height="1080"
     class="full-bleed banner"
   />
 
@@ -203,11 +203,23 @@ const team = [
 
   .lede-shot {
     width: 100%;
+    height: auto;
   }
 
   @media (width >= 48rem) {
+    /* The prose column is capped at 40ch, so the mockup takes whatever
+       horizontal space is left in the row rather than sitting at its
+       intrinsic 500px. */
+    .lede > div {
+      width: auto;
+      flex: 0 1 auto;
+    }
+
     .lede-shot {
-      width: 500px;
+      flex: 1 1 auto;
+      width: auto;
+      min-width: 500px;
+      max-width: 70%;
     }
   }
 
@@ -342,6 +354,7 @@ const team = [
   }
 
   .banner {
+    height: auto;
     margin-block: 4rem;
   }
 

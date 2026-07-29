@@ -2,37 +2,37 @@
 
 /* ---------------------------------------------------------------- tokens -- */
 
-/* Twelve canonical Rosé Pine Moon roles, verbatim from rose-pine/palette.
-   This tier is upstream data, not invented values — it stays diffable against
-   the official palette and keeps overlay/gold/foam available without pasting
-   stray hexes. */
+/* Raw palette. Two families only: a deep teal-navy ink ramp for surfaces and a
+   fuchsia ramp for accents, plus Tailwind's zinc for text. These are the
+   long-standing site colours — the ink/fuchsia pairing predates the Astro
+   port and is what the whole design is tuned against. */
 :root {
-  --rp-base: #232136;
-  --rp-surface: #2a273f;
-  --rp-overlay: #393552;
-  --rp-muted: #6e6a86;
-  --rp-subtle: #908caa;
-  --rp-text: #e0def4;
-  --rp-love: #eb6f92;
-  --rp-gold: #f6c177;
-  --rp-rose: #ea9a97;
-  --rp-pine: #3e8fb0;
-  --rp-foam: #9ccfd8;
-  --rp-iris: #c4a7e7;
+  --ink-950: hsl(204 80% 12%);
+  --ink-900: hsl(204 80% 15%);
+  --ink-800: hsl(204 80% 20%);
+  --ink-700: hsl(204 70% 26%);
+  --ink-500: hsl(204 35% 48%);
+  --ink-300: hsl(202 45% 72%);
+
+  --fuchsia-300: #f0abfc;
+  --fuchsia-400: #e879f9;
+  --fuchsia-500: #d946ef;
+
+  --zinc-100: #f4f4f5;
+  --zinc-200: #e4e4e7;
 }
 
 /* These six --colour-* names are the only ones that exist. Nothing outside
    this block may invent another.
 
-   Do NOT use --rp-muted (#6e6a86) for text: 3.03:1 against the fill, fails
-   AA. It is a border/decoration colour only. */
+   Do NOT use --ink-500 for text: it is a border/decoration colour only. */
 :root {
-  --colour-fill: var(--rp-base);
-  --colour-fill-muted: var(--rp-surface);
-  --colour-text-base: var(--rp-text);
-  --colour-text-muted: var(--rp-subtle);
-  --colour-accent: var(--rp-iris);
-  --colour-highlight: var(--rp-rose);
+  --colour-fill: var(--ink-900);
+  --colour-fill-muted: var(--ink-800);
+  --colour-text-base: var(--zinc-100);
+  --colour-text-muted: var(--zinc-200);
+  --colour-accent: var(--fuchsia-400);
+  --colour-highlight: var(--fuchsia-500);
 }
 
 /* Both stacks keep Tailwind's default sans fallbacks, emoji faces included —
@@ -105,7 +105,7 @@ select {
 html {
   background-color: var(--colour-fill);
   background-image: radial-gradient(
-    color-mix(in srgb, var(--rp-subtle) 15%, transparent) 0.25px,
+    color-mix(in srgb, var(--zinc-200) 15%, transparent) 0.25px,
     transparent 1px
   );
   background-size: 20px 20px;
@@ -263,7 +263,7 @@ a:hover {
 .prose blockquote {
   margin-block: 1.5rem;
   padding-inline-start: 1rem;
-  border-inline-start: 0.25rem solid var(--rp-muted);
+  border-inline-start: 0.25rem solid var(--ink-500);
   font-style: italic;
   color: var(--colour-text-muted);
 }
@@ -276,7 +276,7 @@ a:hover {
 .prose hr {
   margin-block: 3rem;
   border: 0;
-  border-block-start: 1px solid var(--rp-muted);
+  border-block-start: 1px solid var(--ink-500);
 }
 
 .prose img {
@@ -297,7 +297,7 @@ a:hover {
 .prose th,
 .prose td {
   padding: 0.5rem 0.75rem;
-  border: 1px solid var(--rp-muted);
+  border: 1px solid var(--ink-500);
   text-align: start;
 }
 
@@ -324,10 +324,10 @@ a:hover {
   overflow-x: auto;
   font-size: 0.875rem;
   line-height: 1.5rem;
-  /* Shiki writes the theme background inline, and rose-pine-moon's editor
-     background is #232136 — the same value as --colour-fill, so a code block
-     would be invisible against the page. !important is the only lever against
-     an inline style; it is doing exactly one job here. */
+  /* Shiki writes the theme background inline. code-theme.mjs sets it to the
+     same value this rule does, but only this rule tracks --colour-fill-muted
+     if the token ever moves. !important is the only lever against an inline
+     style; it is doing exactly one job here. */
   background-color: var(--colour-fill-muted) !important;
 }
 

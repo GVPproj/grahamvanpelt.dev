@@ -1,6 +1,7 @@
 // @ts-check
 import { defineConfig } from 'astro/config'
 import sitemap from '@astrojs/sitemap'
+import { codeTheme } from './src/styles/code-theme.mjs'
 
 export default defineConfig({
   site: 'https://grahamvanpelt.dev',
@@ -20,6 +21,6 @@ export default defineConfig({
   },
   integrations: [sitemap()],
   markdown: {
-    shikiConfig: { theme: 'rose-pine-moon' },
+    shikiConfig: { theme: codeTheme },
   },
 })

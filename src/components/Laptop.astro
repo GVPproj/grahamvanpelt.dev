@@ -18,15 +18,15 @@ const { src, alt } = Astro.props
 
 <style>
   /* The bezel greys move onto the raw palette tier rather than staying on
-     Tailwind's zinc — that is what --rp-overlay/--rp-surface are there for. */
+     Tailwind's zinc — that is what --ink-700/--ink-800 are there for. */
   .screen {
     position: relative;
     max-width: 301px;
     height: 172px;
     margin-inline: auto;
-    border: 8px solid var(--rp-overlay);
+    border: 8px solid var(--ink-700);
     border-radius: 0.75rem 0.75rem 0 0;
-    background-color: var(--rp-overlay);
+    background-color: var(--ink-700);
   }
 
   .viewport {
@@ -48,7 +48,7 @@ const { src, alt } = Astro.props
     height: 17px;
     margin-inline: auto;
     border-radius: 0.125rem 0.125rem 0.75rem 0.75rem;
-    background-color: var(--rp-surface);
+    background-color: var(--ink-800);
   }
 
   .notch {
@@ -59,7 +59,7 @@ const { src, alt } = Astro.props
     height: 5px;
     transform: translateX(-50%);
     border-radius: 0 0 0.75rem 0.75rem;
-    background-color: var(--rp-overlay);
+    background-color: var(--ink-700);
   }
 
   @media (width >= 48rem) {
