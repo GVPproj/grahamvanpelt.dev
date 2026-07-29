@@ -1,5 +1,9 @@
 ---
+import { Image } from 'astro:assets'
 import Layout from '../layouts/Layout.astro'
+import laptopShot from '../assets/tipbox/laptop.png'
+import noLookingBack from '../assets/tipbox/no-looking-back.png'
+import projectBoard from '../assets/tipbox/project-board.jpg'
 import PortfolioItem from '../components/PortfolioItem.astro'
 import TipboxLogo from '../components/icons/TipboxLogo.astro'
 import { portfolioItems } from '../data/portfolioData'
@@ -66,11 +70,12 @@ const team = [
           of file sharing, task tracking, workflows and project management.
         </p>
       </div>
-      <img
-        src="/images/tipbox/Laptop.png"
+      <Image
+        src={laptopShot}
         alt="Tipbox.io laptop and mobile mockup"
-        width="500"
-        height="300"
+        widths={[500, 720, 1000, 1440]}
+        sizes="(min-width: 48rem) 717px, 100vw"
+        loading="eager"
         class="lede-shot"
       />
     </div>
@@ -92,24 +97,30 @@ const team = [
           experience.
         </p>
       </section>
-      <img
-        src="/images/tipbox/No Looking Back.png"
+      <Image
+        src={noLookingBack}
         alt="No looking back"
-        width="600"
-        height="438"
+        widths={[600, 1200]}
+        sizes="(min-width: 40rem) 600px, 100vw"
         class="role-shot"
       />
     </div>
 
     <h2 class="team-heading">Team</h2>
     <div class="team">
-      <img
-        src="/images/tipbox/_Laptop-slideshow-2.gif"
-        alt="A slideshow of Tipbox.io running on a laptop"
-        width="400"
-        height="238"
+      <video
         class="team-shot"
-      />
+        width="900"
+        height="506"
+        autoplay
+        muted
+        loop
+        playsinline
+        aria-label="A slideshow of Tipbox.io running on a laptop"
+      >
+        <source src="/videos/tipbox-slideshow.webm" type="video/webm" />
+        <source src="/videos/tipbox-slideshow.mp4" type="video/mp4" />
+      </video>
       <section>
         <ul>
           {
@@ -129,11 +140,11 @@ const team = [
     </div>
   </article>
 
-  <img
-    src="/images/tipbox/Ben Frey sample - Tipbox.jpg"
+  <Image
+    src={projectBoard}
     alt="A Tipbox.io project board with attached media"
-    width="1920"
-    height="1080"
+    widths={[768, 1280, 1920]}
+    sizes="100vw"
     class="full-bleed banner"
   />
 
