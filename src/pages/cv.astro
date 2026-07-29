@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets'
 import Layout from '../layouts/Layout.astro'
+import avatar from '../assets/graham.webp'
 import DocIcon from '../components/icons/DocIcon.astro'
 import Email from '../components/icons/Email.astro'
 import Github from '../components/icons/Github.astro'
@@ -40,11 +42,13 @@ const contact = [
   <div class="cv-container">
     <div class="cv">
     <aside>
-      <img
-        src="/images/graham.webp"
+      <Image
+        src={avatar}
         alt="My face smiling"
-        width="144"
-        height="144"
+        widths={[144, 246]}
+        sizes="144px"
+        priority
+        class="avatar"
       />
       <p>
         A front-end web developer who loves <strong>React</strong>. A game
@@ -222,7 +226,7 @@ const contact = [
     margin-inline: auto;
   }
 
-  aside img {
+  .avatar {
     aspect-ratio: 1;
     width: 9rem;
     height: 9rem;
@@ -231,6 +235,9 @@ const contact = [
     border-radius: 9999px;
     background-color: var(--colour-accent);
     overflow: hidden;
+    /* Hides the alt text that paints in the circle before the image bytes
+       arrive; assistive tech reads the attribute, not the render. */
+    color: transparent;
   }
 
   aside ul {
@@ -274,7 +281,7 @@ const contact = [
       margin-block-start: 0;
     }
 
-    aside img {
+    .avatar {
       margin-inline: 0;
     }
   }

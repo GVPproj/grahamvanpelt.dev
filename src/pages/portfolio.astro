@@ -75,7 +75,7 @@ const team = [
         alt="Tipbox.io laptop and mobile mockup"
         widths={[500, 720, 1000, 1440]}
         sizes="(min-width: 48rem) 717px, 100vw"
-        loading="eager"
+        priority
         class="lede-shot"
       />
     </div>
@@ -215,6 +215,9 @@ const team = [
   .lede-shot {
     width: 100%;
     height: auto;
+    /* Hides the alt text that paints in the reserved box before the image
+       bytes arrive; assistive tech reads the attribute, not the render. */
+    color: transparent;
   }
 
   @media (width >= 48rem) {
