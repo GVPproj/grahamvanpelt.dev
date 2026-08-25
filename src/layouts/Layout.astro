@@ -4,6 +4,8 @@ import '../styles/global.css'
 import BaseHead from '../components/BaseHead.astro'
 import SiteHeader from '../components/SiteHeader.astro'
 import SiteFooter from '../components/SiteFooter.astro'
+// PROTOTYPE: dev-only mobile nav variants, see components/prototype/.
+import MobileNavPrototype from '../components/prototype/MobileNavPrototype.astro'
 
 interface Props {
   title: string
@@ -25,5 +27,6 @@ interface Props {
     <SiteHeader />
     <main class="wrapper"><slot /></main>
     <SiteFooter />
+    {import.meta.env.DEV && <MobileNavPrototype />}
   </body>
 </html>
