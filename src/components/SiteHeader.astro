@@ -15,7 +15,7 @@ const links = [
 ]
 ---
 
-<header>
+<header class="site-header">
   <a
     href="/"
     aria-label="Go back to the homepage"
@@ -42,7 +42,7 @@ const links = [
           rel="noopener noreferrer"
           aria-label="Visit my GitHub profile"
         >
-          <Github width="36" height="36" />
+          <Github width="22" height="22" />
         </a>
       </li>
     </ul>
@@ -127,6 +127,20 @@ const links = [
   document.addEventListener('astro:before-preparation', () => {
     document.querySelector<HTMLElement>('#site-nav')?.hidePopover()
   })
+
+  // Brightens the pill's border once it's floating over content. The header
+  // is re-rendered on every client-side navigation, so bind per page load.
+  function bindScroll() {
+    const header = document.querySelector<HTMLElement>('header.site-header')
+    if (!header) return
+    const update = () => {
+      header.toggleAttribute('data-scrolled', window.scrollY > 24)
+    }
+    update()
+    window.addEventListener('scroll', update, { passive: true })
+  }
+  bindScroll()
+  document.addEventListener('astro:page-load', bindScroll)
 </script>
 
 <style>
@@ -137,15 +151,38 @@ const links = [
     padding: 1.5rem;
   }
 
+  /* Desktop: a sticky, frosted pill. It must be a direct child of <body>
+     (the scroll container) for `position: sticky` to work — any wrapper
+     would become its containing block and it would never stick. */
   @media (width >= 48rem) {
     header {
-      padding-block: 3rem;
+      position: sticky;
+      top: 1rem;
+      z-index: 10;
+      width: fit-content;
+      min-width: 0;
+      align-items: center;
+      gap: 1.5rem;
+      margin-block: 1rem 2.5rem;
+      padding: 0.75rem 1.5rem 0.75rem 1.25rem;
+      border: 1px solid var(--ink-700);
+      border-radius: 999px;
+      background-color: color-mix(in srgb, var(--colour-fill) 80%, transparent);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px -10px hsl(204 80% 6% / 0.7);
+      transition: border-color 200ms ease;
     }
-  }
 
-  @media (width >= 64rem) {
-    header {
-      margin-block-end: 2rem;
+    header[data-scrolled] {
+      border-color: var(--ink-500);
+    }
+
+    /* Sig sets its own size (and bumps it at 64rem); the pill needs it small
+       at every desktop width. */
+    header :global(.sig) {
+      width: 7.5rem;
+      height: 1.875rem;
     }
   }
 
@@ -183,24 +220,21 @@ const links = [
     align-items: center;
     gap: 1.5rem;
     font-family: var(--font-sans);
-    font-size: 1.5rem;
-    line-height: 2rem;
+    font-size: 1.0625rem;
+    line-height: 1.5rem;
     font-weight: 500;
   }
 
   @media (width >= 48rem) {
+    /* hairline divider between sig and links */
     .desktop {
       display: block;
+      padding-inline-start: 1.5rem;
+      border-inline-start: 1px solid var(--ink-700);
     }
 
     .menu-toggle {
       display: none;
-    }
-  }
-
-  @media (width >= 64rem) {
-    .desktop ul {
-      gap: 2rem;
     }
   }
 

@@ -20,17 +20,10 @@ interface Props {
     <ClientRouter />
   </head>
   <body>
-    <div class="header-width">
-      <SiteHeader />
-    </div>
+    <!-- SiteHeader is sticky on desktop; it must stay a direct child of body
+         (the scroll container) or a wrapper becomes its containing block. -->
+    <SiteHeader />
     <main class="wrapper"><slot /></main>
     <SiteFooter />
   </body>
 </html>
-
-<style>
-  .header-width {
-    width: 100%;
-    max-width: 1024px;
-  }
-</style>
