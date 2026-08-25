@@ -75,28 +75,39 @@ const links = [
   </button>
 
   <nav popover id="site-nav">
-    <button
-      type="button"
-      popovertarget="site-nav"
-      popovertargetaction="hide"
-      class="menu-close"
-      aria-label="Close menu"
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        width="32"
-        height="32"
+    <!-- The popover sits in the top layer, above the header, so the sig
+         would vanish while the menu is open. This copy keeps it in place. -->
+    <div class="menu-top">
+      <a
+        href="/"
+        aria-label="Go back to the homepage"
+        class:list={['home', { current: path === '/' }]}
       >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M6 18L18 6M6 6l12 12"></path>
-      </svg>
-    </button>
+        <Sig persist={false} />
+      </a>
+      <button
+        type="button"
+        popovertarget="site-nav"
+        popovertargetaction="hide"
+        class="menu-close"
+        aria-label="Close menu"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          width="32"
+          height="32"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </div>
     <ul>
       {
         links.map((link) => (
@@ -280,9 +291,14 @@ const links = [
     }
   }
 
+  /* Mirrors the header's own layout so the sig lands in the same spot. */
+  .menu-top {
+    display: flex;
+    justify-content: space-between;
+  }
+
   .menu-close {
     display: block;
-    margin-inline-start: auto;
     padding-inline: 0.375rem;
     border: 0;
     background: none;
