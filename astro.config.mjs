@@ -13,6 +13,7 @@ export default defineConfig({
   scopedStyleStrategy: 'attribute',
   // Dev is exposed over the tailnet via `tailscale serve --https=4321`, which
   // proxies to IPv4 loopback and forwards the ts.net Host header.
+  // Port ownership on this machine: this site owns 4321, afriendlywave.com 4322.
   server: { host: '127.0.0.1', port: 4321 },
   vite: {
     // strictPort: the tailscale proxy targets 4321, so failing loudly beats
