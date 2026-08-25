@@ -137,8 +137,22 @@ const links = [
     update()
     window.addEventListener('scroll', update, { passive: true })
   }
-  bindScroll()
-  document.addEventListener('astro:page-load', bindScroll)
+
+  function bindScrollLock() {
+    const nav = document.querySelector<HTMLElement>('#site-nav')
+    if (!nav) return
+    nav.addEventListener('beforetoggle', (e) => {
+      document.documentElement.style.overflow =
+        (e as ToggleEvent).newState === 'open' ? 'hidden' : ''
+    })
+  }
+
+  function bind() {
+    bindScroll()
+    bindScrollLock()
+  }
+  bind()
+  document.addEventListener('astro:page-load', bind)
 </script>
 
 <style>
@@ -266,6 +280,7 @@ const links = [
     -webkit-backdrop-filter: blur(16px);
     box-shadow: 0 -20px 50px -20px hsl(204 80% 4% / 0.9);
     color: var(--colour-text-base);
+    overscroll-behavior: contain;
     opacity: 0;
     transform: translateY(100%);
     /* allow-discrete lets `display` and the top layer participate in the
