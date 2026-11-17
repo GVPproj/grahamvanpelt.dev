@@ -3,7 +3,7 @@
   publish = "dist"
 
 [build.environment]
-  NODE_VERSION = "22"
+  NODE_VERSION = "22.23.5"
 
 # The only redirect: /cv/education is retired but linked from already-sent
 # job applications. 301 so search engines consolidate. No `force` — nothing
